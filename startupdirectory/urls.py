@@ -16,7 +16,11 @@ sitemaps = {
 }
 
 urlpatterns = [
+    # All requests go to base.urls
     url(r'', include('base.urls')),
+
+    # Directory App
+    url(r'directory/',include('directory.urls')),
 
     # Admin
     url(r'^admin/', admin.site.urls),

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <title>Student Startup Directory</title>
+    <div class="container" id="main">
+    <div class="row">
+        <h1 class="text-center">Student Startup Directory</h1>
+        <br>
+        <table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">
+            <thead>
+                <tr>
+                    <th data-field="id">#</th>
+                    <th data-field="name">Logo</th>
+                    <th data-field="name">Name</th>
+                    <th data-field="name">Description</th>
+                    <th data-field="name">Website</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

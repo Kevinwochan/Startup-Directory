@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+ 
 {% block content %}
   <title>Student Startup Directory</title>
     <div class="container" id="main">
@@ -16,7 +16,19 @@
                     <th data-field="name">Website</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+            {% for company in companies %}
+                <tr>
+                    <th data-field="id">{{ company.id }}</th>
+                    <th data-field="name">Logo</th>
+                    <th data-field="name">{{ company.company_name }}</th>
+                    <th data-field="name">{{ company.company_description }}</th>
+                    <th data-field="name"><a href="{{ company.website_url }}">{{ company.website_url }}</a></th>
+                </tr>
+            {% empty %}
+                <p> No Companies Found </p>
+            {% endfor %}
+            </tbody>
         </table>
     </div>
 </div>

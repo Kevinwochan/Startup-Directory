@@ -71,7 +71,7 @@ PASSWORD_HASHERS = [
 DEBUG = False
 
 # https://docs.djangoproject.com/en/2.0/ref/settings/#internal-ips
-INTERNAL_IPS = ('127.0.0.1')
+INTERNAL_IPS = ('13.211.154.14')
 
 # LOCALE SETTINGS
 # Local time zone for this installation.

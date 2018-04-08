@@ -1,9 +1,8 @@
-from django.conf.urls import url, path
-
-from .views import index
-B
+from django.conf.urls import url
+from django.conf.urls.static import static
+from .views import index, profile
 
 urlpatterns = [
-    url(r'',index,name='index'),
-    path('<int:comapany_id/',profile,name='profile'),
+    url(r'^$',index,name='index'),
+    url('^(?P<company_id>\d+)$',profile,name='profile'),
 ]

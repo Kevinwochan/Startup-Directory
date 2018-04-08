@@ -2,13 +2,14 @@ import os
 from .base import *  # noqa
 
 DEBUG = False
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
 # DATABASE SETTINGS
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'development.sqlite3',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -16,12 +17,21 @@ DATABASES = {
     },
 }
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache"
+    }
+}
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
 # IMPORTANT!:
 # You must keep this secret, you can store it in an
 # environment variable and set it with:
 # export SECRET_KEY="phil-dunphy98!-bananas12"
 # https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/#secret-key
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'rocketbook'
 
 # WSGI SETTINGS
 # https://docs.djangoproject.com/en/1.10/ref/settings/#wsgi-application
@@ -36,7 +46,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 # DJANGO-COMPRESSOR SETTINGS
-STATICFILES_FINDERS = STATICFILES_FINDERS + (
+STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 

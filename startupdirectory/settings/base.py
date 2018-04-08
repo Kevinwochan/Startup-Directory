@@ -27,7 +27,11 @@ path.append(os.path.join(PROJECT_ROOT, "libs"))
 SITE_ID = 1
 
 # https://docs.djangoproject.com/en/2.0/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.textbook.ventures/*',
+                 '13.211.154.14',
+                 'ec2-13-211-154-14.ap-southeast-2.compute.amazonaws.com',
+                 '*',
+]
 
 # https://docs.djangoproject.com/en/2.0/ref/settings/#installed-apps
 INSTALLED_APPS = [

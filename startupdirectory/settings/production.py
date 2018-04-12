@@ -4,6 +4,13 @@ from .base import *  # noqa
 DEBUG = False
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
+# ALLOWED HOSTS
+# https://docs.djangoproject.com/en/2.0/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = ['.textbook.ventures/*',
+                 '13.211.154.14',
+                 'ec2-13-211-154-14.ap-southeast-2.compute.amazonaws.com',
+                 '*',
+]
 # DATABASE SETTINGS
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
@@ -41,7 +48,7 @@ WSGI_APPLICATION = 'startupdirectory.wsgi.application'
 # A tuple that lists people who get code error notifications.
 # https://docs.djangoproject.com/en/1.10/ref/settings/#admins
 ADMINS = (
-         ('Your Name', 'your_email@example.com'),
+         ('Kevin Chan','kevinwochan@gmail.com'),
 )
 MANAGERS = ADMINS
 

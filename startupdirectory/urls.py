@@ -16,8 +16,8 @@ sitemaps = {
 }
 
 urlpatterns = [
-    # All requests go to base.urls
-    url(r'', include('base.urls')),
+    # All requests go to directory.urls
+    url(r'', include('directory.urls')),
 
     # Directory App
     url(r'directory/',include('directory.urls')),

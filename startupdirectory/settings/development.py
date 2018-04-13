@@ -3,7 +3,7 @@ from .base import *  # noqa
 DEBUG = True
 
 INTERNAL_IPS = ["127.0.0.1"]
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 SECRET_KEY = "secret"
 
 # DATABASE SETTINGS

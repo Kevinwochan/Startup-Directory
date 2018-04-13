@@ -1,6 +1,6 @@
 """
 Project main settings file. These settings are common to the project
-if you need to override something do it in local.pt
+if you need to override something do it in local.py
 """
 
 from sys import path

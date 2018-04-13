@@ -1,7 +1,18 @@
 import os
+from sys import path
 from .base import *  # noqa
 
+# PATHS
+# Path containing the django project
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+path.append(BASE_DIR)
+
+# Path of the top level directory.
+# This directory contains the django project, apps, libs, etc...
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
+
 DEBUG = False
+
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
 # ALLOWED HOSTS
@@ -16,7 +27,7 @@ ALLOWED_HOSTS = ['.textbook.ventures/*',
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'development.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT,'development.sqlite3'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -31,8 +42,6 @@ CACHES = {
 }
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-
 # IMPORTANT!:
 # You must keep this secret, you can store it in an
 # environment variable and set it with:

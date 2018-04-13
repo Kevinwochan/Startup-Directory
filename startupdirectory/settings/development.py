@@ -1,4 +1,17 @@
+import os
+from sys import path
 from .base import *  # noqa
+
+
+# PATHS
+# Path containing the django project
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+path.append(BASE_DIR)
+
+# Path of the top level directory.
+# This directory contains the django project, apps, libs, etc...
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
+
 
 DEBUG = True
 
@@ -11,7 +24,7 @@ SECRET_KEY = "secret"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'development.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT,'development.sqlite3',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',

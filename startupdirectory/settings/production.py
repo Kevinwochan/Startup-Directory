@@ -10,7 +10,7 @@ path.append(BASE_DIR)
 # Path of the top level directory.
 # This directory contains the django project, apps, libs, etc...
 PROJECT_ROOT = os.path.dirname(BASE_DIR)
-
+DATABASE_URL =  os.path.join(PROJECT_ROOT,'development.sqlite3')
 DEBUG = False
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
@@ -27,7 +27,7 @@ ALLOWED_HOSTS = ['.textbook.ventures/*',
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT,'development.sqlite3'),
+        'NAME': DATABASE_URL,
         'USER': '',
         'PASSWORD': '',
         'HOST': '',

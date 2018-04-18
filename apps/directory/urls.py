@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^$(?P<sortby>)$',index),
     url(r'^sortby=(?P<sortby>)$',index),
     url(r'^search=(?P<searched_string>)$', search),
-    url('^(?P<company_id>\d+)$', profile),
+    url('^profile/(?P<company_id>\d+)$', profile),
 ]

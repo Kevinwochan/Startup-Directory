@@ -4,6 +4,7 @@ class Company (models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     founded_date = models.DateField()
+    founders = models.CharField(max_length=200)
     stage = models.CharField(max_length=200)
     submission_date = models.DateTimeField()
     industries = models.CharField(max_length=200)

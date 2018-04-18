@@ -1,21 +1,17 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 django = "==2.0"
 "argon2-cffi" = "*"
 django-compressor = "*"
 "psycopg2" = "*"
 bcrypt = "*"
-
+pillow = "*"
 
 [dev-packages]
-
 django-debug-toolbar = "*"
 sphinx = "*"
 coverage = "*"

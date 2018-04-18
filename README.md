@@ -40,6 +40,17 @@ Directory
     
 Registration
 
+####################
+# Useful Utilities #
+####################
+
+CSV to DB saver
+
+Save file "startup.csv" in project folder 
+Run by passing the program into Django's Shell
+
+    pipenv run python manage.py shell < csvTosql.py 
+
 ##################
 ## Dependencies ##
 ##################

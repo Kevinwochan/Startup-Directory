@@ -4,10 +4,11 @@ html, body {
 }
 
 .navbar {
-    background-color: #1f365b;
+    background-color: white;
     font-size: 1.2em;
     max-height: 150px;
     border: 0 !important;
+    box-shadow: 0 0 15px 1px rgba(0,0,0,.07);
 }
 
 .navbar-default .navbar-nav li a {
@@ -15,8 +16,9 @@ html, body {
     font-weight: 500;
 }
 
-.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:active {
-    color: #FFFFFF;
+.navbar-default .navbar-nav li a:hover,
+.navbar-default .navbar-nav li a:active {
+    color:linear-gradient(135deg,#35a3db 30%,#12d9e8 100%) ;
     font-weight: 700;
 }
 
@@ -42,8 +44,8 @@ proftext {
 
 footer {
     width: 100%;
-    background-color: #1f365b;
-    color: #ffffff;
+    background-color: white;
+    color: black;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;

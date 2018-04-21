@@ -59,6 +59,7 @@ Run by passing the program into Django's Shell
 - [Pipenv](https://docs.pipenv.org) To manage dependences and virtualenvs.
 - [Django debug toolbar](http://django-debug-toolbar.readthedocs.org/) enabled for superusers.
 - [Argon2](https://docs.djangoproject.com/en/2.0/topics/auth/passwords/#using-argon2-with-django) to hash the passwords
+- [Pillow] (https://github.com/python-pillow) to handle images
 
 ######################
 ## Local Host Setup ##

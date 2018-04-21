@@ -15,6 +15,8 @@ def index (request, sorting_string):
                 companies = companies.order_by('funding').order_by('funding_unit')
             else:
                 companies = companies.order_by(sortby)
+            if re.search(r'-',sortby):
+                companies = companies.reverse()
     else:
         lambdas = ''
         companies = Company.objects.order_by('submission_date')

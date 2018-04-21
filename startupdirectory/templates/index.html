@@ -9,61 +9,75 @@
             <thead>
                 <tr>
                     <th data-field="logo">Logo</th>
-                    <th data-field="name">Name
-                       {% if 'name' not in lambdas %}
-                       <a href="{% url 'directory:index' 'name' %}" class="sort-icon">
+                    <th data-field="name">
+                       {% if '-name' in lambdas %}
+                       Name <a href="{% url 'directory:index' 'name' %}" class="sort-icon">
+                            <i class="fas fa-arrow-down"></i>
+                       </a>
+                       {% elif 'name' in lambdas %}
+                       Name <a href="{% url 'directory:index' '-name' %}" class="sort-icon">
                             <i class="fas fa-arrow-up"></i>
                        </a>
                        {% else %}
-                        <a href="{% url 'directory:index' '-name' %}" class="sort-icon">
-                            <i class="fas fa-arrow-down"></i>
-                       </a>
+                       <a href="{% url 'directory:index' 'name' %}">Name</a>
                        {% endif %}
                     </th>
                     <th data-field="description">Description</th>
-                    <th data-field="industries">Industries
-                       {% if 'industries' not in lambdas %}
+                    <th data-field="industries">
+                       {% if '-industries' in lambdas %}
+                       Industries 
                        <a href="{% url 'directory:index' 'industries' %}" class="sort-icon">
+                            <i class="fas fa-arrow-down"></i>
+                       </a>
+                       {% elif 'industries' in lambdas %}
+                       Industries 
+                       <a href="{% url 'directory:index' '-industries' %}" class="sort-icon">
                             <i class="fas fa-arrow-up"></i>
                        </a>
                        {% else %}
-                        <a href="{% url 'directory:index' '-industries' %}" class="sort-icon">
-                            <i class="fas fa-arrow-down"></i>
-                       </a>
+                       <a href="{% url 'directory:index' 'industries' %}">Industries</a>
                        {% endif %}
                     </th>
-                    <th data-field="founded">Year Founded
-                       {% if 'year_founded' not in lambdas %}
+                    <th data-field="founded">
+                       {% if '-year_founded'  in lambdas %}
+                       Year Founded 
                        <a href="{% url 'directory:index' 'year_founded' %}" class="sort-icon">
+                            <i class="fas fa-arrow-down"></i>
+                       </a>
+                       {% elif 'year_founded'  in lambdas %}
+                       Year Founded
+                        <a href="{% url 'directory:index' '-year_founded' %}" class="sort-icon">
                             <i class="fas fa-arrow-up"></i>
                        </a>
                        {% else %}
-                        <a href="{% url 'directory:index' '-year_founded' %}" class="sort-icon">
-                            <i class="fas fa-arrow-down"></i>
-                       </a>
+                       <a href="{% url 'directory:index' 'year_founded' %}">Year Founded</a>
                        {% endif %}
                     </th>
-                    <th data-field="stage">Stage
-                       {% if 'stage' not in lambdas %}
-                       <a href="{% url 'directory:index' 'stage' %}" class="sort-icon">
+                    <th data-field="stage">
+                       {% if '-stage' in lambdas %}
+                       Stage <a href="{% url 'directory:index' 'stage' %}" class="sort-icon">
+                            <i class="fas fa-arrow-down"></i>
+                       </a>
+                       {% elif 'stage' in lambdas %}
+                        Stage <a href="{% url 'directory:index' '-stage' %}" class="sort-icon">
                             <i class="fas fa-arrow-up"></i>
                        </a>
                        {% else %}
-                        <a href="{% url 'directory:index' '-stage' %}" class="sort-icon">
-                            <i class="fas fa-arrow-down"></i>
-                       </a>
+                       <a href="{% url 'directory:index' 'stage' %}">Stage</a>
                        {% endif %}
                     </th>
 
-                   <th data-field="funding">Funding
-                   {% if 'funding' not in lambdas %}
-                   <a href="{% url 'directory:index' 'funding' %}" class="sort-icon">
+                   <th data-field="funding">
+                   {% if '-funding' in lambdas %}
+                   Funding <a href="{% url 'directory:index' 'funding' %}" class="sort-icon">
+                        <i class="fas fa-arrow-down"></i>
+                   </a>
+                   {% elif 'funding' in lambdas %}
+                   Funding <a href="{% url 'directory:index' '-funding' %}" class="sort-icon">
                         <i class="fas fa-arrow-up"></i>
                    </a>
                    {% else %}
-                    <a href="{% url 'directory:index' '-funding' %}" class="sort-icon">
-                        <i class="fas fa-arrow-down"></i>
-                   </a>
+                   <a href="{% url 'directory:index' 'funding' %}">Funding</a>
                    {% endif %}
                 </tr>
             </thead>

@@ -18,7 +18,6 @@ sitemaps = {
 urlpatterns = [
     # All requests go to directory.urls
     url(r'', include('directory.urls'), name="index"),
-
     # Admin
     url(r'^admin/', admin.site.urls),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

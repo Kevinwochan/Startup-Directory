@@ -4,22 +4,18 @@ from django.conf.urls.static import static
 from django.forms.models import model_to_dict
 
 # display list of companies sorted by date added
-def index(request, sortby):
+def index (request, sortby):
     if isValid_field (sortby):
         companies = Company.objects.order_by(sortby)
     else:
         companies = Company.objects.order_by('submission_date')
-        
     return render(request,"index.html",{'companies':companies})
-    
-    
+
 def profile (request, company_id):
 #   fetches a company based on id
     company_obj = get_object_or_404(Company,pk=company_id)
     company = model_to_dict(company_obj)
-# two lines for readability
-    founder_array = company['founders'].split(',')
-    company['founders'] = founder_array
+    company['founders'] = company['founders'].split(',')
     return render(request,'profile.html',{'company':company})
 
 

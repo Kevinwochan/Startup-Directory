@@ -109,11 +109,15 @@ a{
 body {
     padding-top: 65px;
 }
-even{
+even {
     background: grey;
 }
 odd {
     background:white;
+}
+table .logo {
+    max-height:50px;
+    height:auto;
 }
 .bordered {
     border: #000000 thin solid;

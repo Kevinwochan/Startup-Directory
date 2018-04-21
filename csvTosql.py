@@ -1,42 +1,37 @@
-#!/usr/bin/env python
-import sys, os
-
-# define settings for django
-os.environ("DJANGO_SETTINGS_MODULE", "startupdirectory.settings.development")
-
-
-from apps.directory.models import Company
-
-# get current working directory
-PROJECT_DIR = os.getcwd()
-# get csv file 
-csv_filepath = os.path.join( PROJECT_DIR,'startups.csv')
-
+import os
+from directory.models import Company
 import sqlite3
-sql = sqlite3.connect('development.db')
-cur = sql.cursor()
-
-import csv  
-fd = open(csv_filepath,'r')
-next(f, None) # skip the header row
-dataReader = csv.reader(fd, delimiter=',', quotechar='"')
-
+import csv
 from datetime import datetime
-for row in dataReader:
-    company=Company()
-    company.name=row[0]
-    company.founded_year=row[1]
-    company.website=row[2]
-    company.industries=row[3]
-    company.description=row[4]
-    company.stage=row[5]
-    company.submission_date=datetime.datetime.now()
-
-    company.save()
-    sql.commit()
-
-	
-fd.close()
-sql.close()
-
-
+import re
+os.environ['DJANGO_SETTINGS_MODULE'] = "startupdirectory.settings.development"
+PROJECT_DIR = os.getcwd()
+csv_filepath = os.path.join( PROJECT_DIR,'startups.csv')
+with open(csv_filepath,'r') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        if Company.objects.filter(name=row['name']).exists():
+            company = Company.objects.get(name=row['name'])
+            print ('==== updating ' + row['name'] + ' ====')
+            for field in iter(row):
+                if row[field] == '':
+                    default_value = Company._meta.get_field(field).get_default()
+                    setattr(company, field, default_value)
+                else:
+                    setattr(company, field, row[field])
+                print('    ' + field + ': ' + row[field])
+            company.save()
+            print ( '===== update sucessful =====' )
+        else:
+            company=Company()
+            print ('==== saving ' + row['name'] + ' ====')
+            for field in iter(row):
+                if row[field] == '':
+                    default_value = Company._meta.get_field(field).get_default()
+                    setattr(company, field, default_value)
+                else:
+                        setattr(company, field, row[field])
+                print('    ' + field + ': ' + row[field])
+            company.submission_date=datetime.now()
+            company.save()
+            print ( '===== save succesful =====' )

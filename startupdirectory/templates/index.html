@@ -17,7 +17,7 @@
             </thead>
             <tbody>
             {% for company in companies %}
-                <tr>
+            <tr class="{% cycle 'odd' 'even' %}">
                     <th data-field="number">{{ company.id }}</th>
                     <th data-field="logo">
                         <a href="profile/{{ company.id }}">

@@ -5,14 +5,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta name="description" content="{% block meta_description %}{% endblock %}">
     <meta name="author" content="{% block meta_author %}{% endblock %}">
 
     <title>{% block page_title %}{% endblock %}</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font"/>
-      <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">  
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
   
    {% compress js %}
     <script src="{% static 'js/app.js' %}"></script>
@@ -41,15 +43,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img class ="img-responsive" src="{% static 'img/TBV_LOGO.png' %}"></a>
+                <a class="navbar-brand" href="{% url 'directory:home' %}"><img class ="img-responsive" src="{% static 'img/textbook-ventures.png' %}"></a>
             </div>
             <!-- Nav Menu -->
             <div class="collapse navbar-collapse" id="navbar-collapse-main">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="active" href="textbook.ventures/about">ABOUT</a></li>
-                    <li><a href="textbook.ventures/blog">BLOG</a></li>
-                    <li><a href="textbook.ventures/events">EVENTS</a></li>
-                    <li><a href="textbook.ventures/register">REGISTER</a></li>
+                    <li class="menu-item">
+                        <a class="active" href="http//textbook.ventures/#about">
+                            <span class="menu-item-text">
+                                <span class="menu-text">ABOUT</span></span></a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="http://textbo>ok.ventures/blog">
+                            <span class="menu-item-text">
+                                <span class="menu-text">BLOG</span></span></a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="http://textbook.ventures/events">
+                            <span class="menu-item-text">
+                                <span class="menu-text">EVENTS</span></span></a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="http://directory.textbook.ventures/">
+                            <span class="menu-item-text">
+                                <span class="menu-text">DIRECTORY</span></span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -67,27 +85,41 @@
 
 
     <footer id="footer" class="container-fluid text-center">
-        <div class="row">
-            <div class="col-sm-4">
-                <h3>Contact Us</h3>
-                <br>
-                <h4>Contactemail@email.com</h4>
+
+        <div class="social-footer">
+            <div class="social-link">
+                <a href="http://medium.com/textbook-ventures">
+                    <div class="social-icon"><i class="fab fa-medium-m"></i></div>
+                    <p class="social-platform">BLOGS</p>
+                    <p class="social-user">Medium</p>
+                </a>
             </div>
-            
-            <div class="col-sm-4">
-                <h3>Follow</h3>
-                <br>
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-twitter"></a>
-                <a href="#" class="fa fa-linkedin"></a>
+            <div class="social-link">
+                <a href="https://twitter.com/tb_ventures">
+                <div class="social-icon"><i class="fab fa-twitter"></i></div>
+                <p class="social-platform">TWITTER</p>
+                <p class="social-user">@tb_ventures</p>
+                </a>
             </div>
-            
-            <div class="col-sm-4 center-block">
-                <img sheight="100px"src="{% static 'img/TBV_LOGO.png' %}" class="footer-logo">
-                <br>
-                <h4>Textbook Ventures &copy; 2018</h4>
+            <div class="social-link">
+                <a href="https://www.facebook.com/textbookventures/">
+                <div class="social-icon"><i class="fab fa-facebook"></i></div>
+                <p class="social-platform">FACEBOOK</p>
+                <p class="social-user">@textbookventures</p>
+                </a>
             </div>
-        </div>
+          <div class="social-link">
+                <a href="https://www.linkedin.com/company/12903671/">
+                <div class="social-icon"><i class="fab fa-linkedin"></i></div>
+                <p class="social-platform">LINKEDIN</p>
+                <p class="social-user">@Textbook_Venture</p>
+                </a>
+           </div>
+       </div>
+       <div class="copyright-notice">
+            <p>© 2018 Textbook Ventures Inc. Trademarks and brands are the property of their respective owners.</p>
+       </div>
+
     </footer>
 
 </html>

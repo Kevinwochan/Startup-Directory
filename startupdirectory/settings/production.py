@@ -47,7 +47,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # environment variable and set it with:
 # export SECRET_KEY="phil-dunphy98!-bananas12"
 # https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/#secret-key
-SECRET_KEY = 'rocketbook'
+SECRET_KEY = '5-bizn(#3a_rh16s2ua=a$hrc*v1)&!)dqtw*llfmg*6jjkex)'
 
 # WSGI SETTINGS
 # https://docs.djangoproject.com/en/1.10/ref/settings/#wsgi-application

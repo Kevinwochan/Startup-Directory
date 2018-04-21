@@ -8,25 +8,78 @@
         <table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">
             <thead>
                 <tr>
-                    <th data-field="id">#</th>
-                    <th data-field="name">Logo</th>
-                    <th data-field="name">Name</th>
-                    <th data-field="name">Description</th>
-                    <th data-field="name">Website</th>
+                    <th data-field="logo">Logo</th>
+                    <th data-field="name">Name
+                       {% if 'name' not in lambdas %}
+                       <a href="{% url 'directory:index' 'name' %}" class="sort-icon">
+                            <i class="fas fa-arrow-up"></i>
+                       </a>
+                       {% else %}
+                        <a href="{% url 'directory:index' '-name' %}" class="sort-icon">
+                            <i class="fas fa-arrow-down"></i>
+                       </a>
+                       {% endif %}
+                    </th>
+                    <th data-field="description">Description</th>
+                    <th data-field="industries">Industries
+                       {% if 'industries' not in lambdas %}
+                       <a href="{% url 'directory:index' 'industries' %}" class="sort-icon">
+                            <i class="fas fa-arrow-up"></i>
+                       </a>
+                       {% else %}
+                        <a href="{% url 'directory:index' '-industries' %}" class="sort-icon">
+                            <i class="fas fa-arrow-down"></i>
+                       </a>
+                       {% endif %}
+                    </th>
+                    <th data-field="founded">Year Founded
+                       {% if 'year_founded' not in lambdas %}
+                       <a href="{% url 'directory:index' 'year_founded' %}" class="sort-icon">
+                            <i class="fas fa-arrow-up"></i>
+                       </a>
+                       {% else %}
+                        <a href="{% url 'directory:index' '-year_founded' %}" class="sort-icon">
+                            <i class="fas fa-arrow-down"></i>
+                       </a>
+                       {% endif %}
+                    </th>
+                    <th data-field="stage">Stage
+                       {% if 'stage' not in lambdas %}
+                       <a href="{% url 'directory:index' 'stage' %}" class="sort-icon">
+                            <i class="fas fa-arrow-up"></i>
+                       </a>
+                       {% else %}
+                        <a href="{% url 'directory:index' '-stage' %}" class="sort-icon">
+                            <i class="fas fa-arrow-down"></i>
+                       </a>
+                       {% endif %}
+                    </th>
+
+                   <th data-field="funding">Funding
+                   {% if 'funding' not in lambdas %}
+                   <a href="{% url 'directory:index' 'funding' %}" class="sort-icon">
+                        <i class="fas fa-arrow-up"></i>
+                   </a>
+                   {% else %}
+                    <a href="{% url 'directory:index' '-funding' %}" class="sort-icon">
+                        <i class="fas fa-arrow-down"></i>
+                   </a>
+                   {% endif %}
                 </tr>
             </thead>
             <tbody>
             {% for company in companies %}
-                <tr>
-                    <th data-field="number">{{ company.id }}</th>
+            <tr class="{% cycle 'odd' 'even' %}">
                     <th data-field="logo">
                         <a href="profile/{{ company.id }}">
                         <img class="logo" src="media/{{ company.logo }}"></a></th>   
                     <th data-field="name">
                         <a href="profile/{{ company.id }}">{{ company.name }} </a> </th>
                     <th data-field="description">{{ company.description }}</th>
-                    <th data-field="url"> 
-                        <a href="{{ company.website }}">{{ company.website }}</a></th>
+                    <th data-field="industries">{{ company.industries }}</th>
+                    <th data-field="founded">{{ company.year_founded }}</th>
+                    <th data-field="stage">{{ company.stage }}</th>
+                    <th data-field="funding">{{ company.funding }} {{company.funding_unit }}</th>
                 </tr>
             {% empty %}
                 <p> No Companies Found </p>

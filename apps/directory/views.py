@@ -5,18 +5,19 @@ from django.forms.models import model_to_dict
 import re
 
 # display list of companies sorted by date added
-def index (request, sorting_string):
+def index (request, sorting_string, page):
+    print( 'sort string is : '+ sorting_string)
     companies = Company.objects.all()
-    if isValid_sortingString (sorting_string):
+    if sorting_string != '':
         # extracts multiple sort lambdas
         lambdas = re.findall(r'[-a-z_]+', sorting_string)
+        print( lambdas)
         for sortby in lambdas:
+            print("sortby is " + sortby)
             if lambdas == 'funding':
                 companies = companies.order_by('funding').order_by('funding_unit')
             else:
                 companies = companies.order_by(sortby)
-            if re.search(r'-',sortby):
-                companies = companies.reverse()
     else:
         lambdas = ''
         companies = Company.objects.order_by('submission_date')

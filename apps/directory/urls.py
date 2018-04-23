@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^\?sortby=(?P<sorting_string>-?year_founded)(&page=(?P<page>\d+))?$',index, name='index'),
     url(r'^\?sortby=(?P<sorting_string>-?stage)(&page=(?P<page>\d+))?$',index, name='index'),
     url(r'^\?sortby=(?P<sorting_string>-?funding)(&page=(?P<page>\d+))?$',index, name='index'),
-    url('^pofile/(?P<company_id>\d+)$', profile),
+    url('^profile/(?P<company_id>\d+)$', profile),
 ]

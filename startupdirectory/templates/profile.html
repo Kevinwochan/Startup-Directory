@@ -1,58 +1,76 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<table class="container" id="profile">
-  <tr class="row">
-    <td><img class="profilepic" src="/media/{{ company.logo }}"></td>
-  </tr>
-  <tr>
-    <td>Name</td>
-    <td>{{ company.name }}</td>
-  </tr>
-{% if company.website %}
-  <tr>
-    <td>Website</td>
-    <td><a href="{{ company.website }}">{{ company.website }}</a></td>
-  </tr>
-{% endif %}
-{% if company.founded_year %}
-  <tr>
-    <td>Founded</td>
-    <td>{{ company.founded_year }}</td>
-  </tr>
-{% endif %}
-{% if company.industries %}
-  <tr>
-    <td>Industry</td>
-    <td>{{ company.industries }}</td>
-  </tr>
-{% endif %}
-{% if company.founders %}
-  <tr>
-    <td>Founders</td>
-    <td>{% for founder in company.founders%}{{ founder }}{% endfor %}</td>
-  </tr>
-{% endif %}
-{% if company.stage %}
-  <tr>
-    <td>Stage</td>
-    <td>{{ company.stage }}</td>
-  </tr>
-{% endif %}
-{% if company.description %}
-  <tr>
-    <td><h4>Description<h4></td>
-  </tr>
- <tr>
-    <td>{{ company.description }}</td>
-  </tr>
-{% endif %}
-{% if company.email %}
-  <tr>
-    <td><h4>Contact<h4></td>
-    <td>{{ company.email }}</td>
-  </tr>
-{% endif %}
-</table>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ company.name }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img id="profile-img" class="img-responsive" src="/media/{{ company.logo }}">
+        </div>
+        <div class="col-md-6">
+            <table id="profile">
+
+                {% if company.website %}
+                <tr>
+                    <td>Website:</td>
+                    <td><a href="{{ company.website }}">{{ company.website }}</a></td>
+                </tr>
+                {% endif %}
+                
+                 {% if company.industries %}
+                <tr>
+                    <td>Industry:</td>
+                    <td>{{ company.industries }}</td>
+                </tr>
+                {% endif %}
+
+                {% if company.founded_year %}
+                <tr>
+                    <td>Founded:</td>
+                    <td>{{ company.founded_year }}</td>
+                </tr>
+                {% endif %}
+                
+                {% if company.founders %}
+                <tr>
+                    <td>Founders:</td>
+                    <td>{% for founder in company.founders%}{{ founder }}{% endfor %}</td>
+                </tr>
+                {% endif %}
+                
+                {% if company.stage %}
+                <tr>
+                    <td>Stage:</td>
+                    <td>{{ company.stage }}</td>
+                </tr>
+                {% endif %}
+                
+            </table>
+        </div>
+    </div>
+    
+    {% if company.description %}
+    <div id="profile-desc" class="row">
+        <div class="col-md-12">
+            <h3>Description</h3>
+            <p>{{ company.description }}</p>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if company.email %}
+    <div id="profile-cont" class="row">
+        <div class="col-md-12">
+            <h3>Contact</h3>
+            <p>{{ company.email }}</p>
+        </div>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
+

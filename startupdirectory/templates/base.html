@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">  
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   
    {% compress js %}
     <script src="{% static 'js/app.js' %}"></script>
@@ -35,30 +36,40 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'directory:home' %}"><img class ="img-responsive" src="{% static 'img/textbook-ventures.png' %}"></a>
+                <a class="navbar-brand" href="http//textbook.ventures"><img id="nav-img"class ="img-responsive" src="{% static 'img/textbook-ventures.png' %}"></a>
             </div>
             <!-- Nav Menu -->
             <div class="collapse navbar-collapse" id="navbar-collapse-main">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
                     <li class="menu-item">
-                        <a class="active" href="http//textbook.ventures/#about">
+                        <a class="active" href="http//textbook.ventures/#!/about">
                             <span class="menu-item-text">
-                                <span class="menu-text">ABOUT</span></span></a>
+                                <span class="menu-text">Our Mission</span></span></a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://textbo>ok.ventures/blog">
+                        <a class="active" href="http//textbook.ventures/#!/initiatives">
                             <span class="menu-item-text">
-                                <span class="menu-text">BLOG</span></span></a>
+                                <span class="menu-text">Our Initiatives</span></span></a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://textbook.ventures/events">
+                        <a class="active" href="http//textbook.ventures/#!/sponsors">
                             <span class="menu-item-text">
-                                <span class="menu-text">EVENTS</span></span></a>
+                                <span class="menu-text">Sponsors</span></span></a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://directory.textbook.ventures/">
+                        <a class="active" href="http//textbook.ventures/#!/testimonials">
                             <span class="menu-item-text">
-                                <span class="menu-text">DIRECTORY</span></span></a>
+                                <span class="menu-text">Testimonials</span></span></a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="active" href="http//directory.textbook.ventures">
+                            <span class="menu-item-text">
+                                <span class="menu-text">Directory</span></span></a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="active" href="http//textbook.ventures/#!/contact">
+                            <span class="menu-item-text">
+                                <span class="menu-text">Contact</span></span></a>
                     </li>
                 </ul>
             </div>
@@ -82,8 +93,8 @@
             <div class="social-link">
                 <a href="http://medium.com/textbook-ventures">
                     <div class="social-icon"><i class="fab fa-medium-m"></i></div>
-                    <p class="social-platform">BLOGS</p>
-                    <p class="social-user">Medium</p>
+                    <p class="social-platform">OUR BLOG</p>
+                    <p class="social-user">@textbook-ventures</p>
                 </a>
             </div>
             <div class="social-link">
@@ -104,14 +115,40 @@
                 <a href="https://www.linkedin.com/company/12903671/">
                 <div class="social-icon"><i class="fab fa-linkedin"></i></div>
                 <p class="social-platform">LINKEDIN</p>
-                <p class="social-user">@Textbook_Venture</p>
+                <p class="social-user">@Textbook_Ventures</p>
                 </a>
            </div>
        </div>
-       <div class="copyright-notice">
-            <p>© 2018 Textbook Ventures Inc. Trademarks and brands are the property of their respective owners.</p>
-       </div>
+        
+        <div id="bottom-nav" class="row">
+            <div class="col-sm-6">
+                <p>© 2018 Textbook Ventures Inc. Trademarks and brands are the property of their respective owners.</p>
+            </div>
+            <div class="col-sm-6">
+                <ul class="list-inline">
+                    <li>
+                        <a class="bottom-nav-link" href="http//textbook.ventures/#!/about">Our Mission</a>
+                    </li>
+                    <li>
+                        <a class="bottom-nav-link" href="http//textbook.ventures/#!/initiatives">Our Initiatives</a>
+                    </li>
+                    <li>
+                        <a class="bottom-nav-link" href="http//textbook.ventures/#!/sponsors">Sponsors</a>
+                    </li>
+                    <li>
+                        <a class="bottom-nav-link" href="http//textbook.ventures/#!/testimonials">Testimonials</a>
+                    </li>
+                    <li>
+                        <a class="bottom-nav-link" href="http//directory.textbook.ventures">Directory</a>
+                    </li>
+                    <li>
+                        <a class="bottom-nav-link" href="http//textbook.ventures/#!/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
+       
     </footer>
 
 </html>

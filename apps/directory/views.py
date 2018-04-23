@@ -5,7 +5,7 @@ from django.forms.models import model_to_dict
 import re
 
 # display list of companies sorted by date added
-def index (request, sorting_string):
+def index (request, sorting_string, page):
     print( 'sort string is : '+ sorting_string)
     companies = Company.objects.all()
     if sorting_string != '':

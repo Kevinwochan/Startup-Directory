@@ -156,11 +156,11 @@ proftext {
     Profile
 */
 
-#profile-img .img-responsive {
+#profile-img {
     height: auto;
     width: auto;
-    max-height: 275px;
-    max-width: 275px;
+    max-height: 160px;
+    max-width: 160px;
     border: 0 !important;
 }
 

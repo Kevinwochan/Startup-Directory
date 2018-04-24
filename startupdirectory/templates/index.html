@@ -85,15 +85,15 @@
             <tbody>
             {% for company in companies %}
             <tr class="{% cycle 'odd' 'even' %}">
-                    <th data-field="logo">
+                    <td data-field="logo">
                         <a href="profile/{{ company.id }}">
-                        <img class="logo" src="media/{{ company.logo }}"></a></th>   
-                    <th data-field="name">
-                        <a href="profile/{{ company.id }}">{{ company.name }} </a> </th>
-                    <th data-field="description">{{ company.description }}</th>
-                    <th data-field="industries">{{ company.industries }}</th>
-                    <th data-field="founded">{{ company.year_founded }}</th>
-                    <th data-field="stage">{{ company.stage }}</th>
+                        <img class="logo" src="media/{{ company.logo }}"></a></td>   
+                    <td data-field="name">
+                        <a href="profile/{{ company.id }}">{{ company.name }} </a> </td>
+                    <td data-field="description">{{ company.description }}</td>
+                    <td data-field="industries">{{ company.industries }}</td>
+                    <td data-field="founded">{{ company.year_founded }}</td>
+                    <td data-field="stage">{{ company.stage }}</td>
 <!--
                     <th data-field="funding">{{ company.funding }} {{company.funding_unit }}</th>
 -->

@@ -2,10 +2,6 @@
     Document Settings
 */
 
-* {
-    font-family: 'Roboto Condensed', sans-serif;
-}
-
 html, body {
     height: 100%;
     width: 100%;
@@ -129,6 +125,21 @@ a{
 /*
     Document Body
 */
+html, body, body.page, .container > * {
+    font: normal 15px / 27px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: 15px;
+    line-height: 27px;
+    font-family: Roboto, Helvetica, Arial, Verdana, sans-serif;
+    word-spacing: normal;
+    color: #37374c;
+}
 body {
     padding-top: 65px;
 }

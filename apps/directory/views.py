@@ -3,6 +3,7 @@ from .models import Company
 from django.conf.urls.static import static
 from django.forms.models import model_to_dict
 import re
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # display list of companies sorted by date added
 def index (request, sorting_string, page):
@@ -21,6 +22,12 @@ def index (request, sorting_string, page):
     else:
         lambdas = ''
         companies = Company.objects.order_by('submission_date')
+
+    paginator = Paginator(companies, 15)
+
+    page = request.GET.get('page')
+    companies = paginator.get_page(page)
+    
     return render(request,"index.html",{'companies':companies,'lambdas':lambdas})
 
 def profile (request, company_id):
@@ -38,7 +45,7 @@ def columns(request):
 
 def statistics (request):
     return
-# displays a list of comapnies, founders, 
+# displays a list of comapnies, founders,
 def search (searched_string):
     return
 
@@ -49,10 +56,10 @@ def isValid_sortingString ( sorting_string):
             return 0
     return 1
 
-# checks field give is valid 
+# checks field give is valid
 def isValid_field ( field ):
     try:
         Company._meta.get_field(field)
-    except: 
+    except:
         return 0
     return 1

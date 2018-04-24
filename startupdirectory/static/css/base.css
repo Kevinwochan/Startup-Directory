@@ -169,14 +169,19 @@ proftext {
 
 #prof-field {
     padding-right: 5px;
+    padding-top: 5px
     font-size: 18px;
 }
 
 #profile-desc {
+    padding-top: 10px;
+    padding-bottom: 7px;
     font-size: 18px;
 }
 
 #profile-cont {
+    padding-top: 7px;
+    padding-bottom: 10px;
     font-size: 18px;
 }
 

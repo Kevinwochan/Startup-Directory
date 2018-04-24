@@ -155,26 +155,31 @@ proftext {
 /*
     Profile
 */
+#profile {
+    padding-top: 20px;
+}
 
 #profile-img {
     height: auto;
     width: auto;
-    max-height: 160px;
-    max-width: 160px;
+    max-height: 200px;
+    max-width: 200px;
     border: 0 !important;
 }
 
-#profile .td {
-    padding: 10px;
+#prof-field {
+    padding-right: 5px;
+    font-size: 18px;
 }
 
-#profile-desc .p{
-    font-size: 22px;
+#profile-desc {
+    font-size: 18px;
 }
 
-#profile-cont .p{
-    font-size: 22px;
+#profile-cont {
+    font-size: 18px;
 }
+
 /*
     Footer
 */

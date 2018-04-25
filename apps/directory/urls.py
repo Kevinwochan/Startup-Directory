@@ -4,7 +4,7 @@ from .views import *
 
 app_name='directory'
 urlpatterns = [
-    url(r'^$(?P<sorting_string>)(?P<page>)$',index, name='home'),
+    url(r'^$',home, name='home'),
    # url(r'^sortby=(?P<sorting_string>[-a-z&_]+)$',index, name='index'),
     url(r'^\?&page=(?P<page>\d+)$',index, name='index'),
     url(r'^\?sortby=(?P<sorting_string>-?name)(&page=(?P<page>\d+))?$',index, name='index'),

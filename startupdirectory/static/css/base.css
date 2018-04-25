@@ -149,6 +149,11 @@ even {
 odd {
     background:white;
 }
+thead {
+    color:white;
+    background: -webkit-linear-gradient(135deg,#35a3db 2%,#12d9e8 100%);
+    background: linear-gradient(135deg,#35a3db 2%,#12d9e8 100%);
+}
 table .logo {
     max-height:50px;
     height:auto;

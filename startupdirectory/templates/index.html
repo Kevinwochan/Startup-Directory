@@ -85,24 +85,22 @@
             <tbody>
             {% for company in companies %}
             <tr class="{% cycle 'odd' 'even' %}">
-                    <th data-field="logo">
+                    <td data-field="logo">
                         <a href="profile/{{ company.id }}">
-                        <img class="logo" src="media/{{ company.logo }}"></a></th>   
-                    <th data-field="name">
-                        <a href="profile/{{ company.id }}">{{ company.name }} </a> </th>
-                    <th data-field="description">{{ company.description }}</th>
-                    <th data-field="industries">{{ company.industries }}</th>
-                    <th data-field="founded">{{ company.year_founded }}</th>
-                    <th data-field="stage">{{ company.stage }}</th>
-<!--
-                    <th data-field="funding">{{ company.funding }} {{company.funding_unit }}</th>
--->
+                        <img class="logo" src="media/{{ company.logo }}"></a></td>   
+                    <td data-field="name">
+                        <a href="profile/{{ company.id }}">{{ company.name }} </a> </td>
+                    <td data-field="description">{{ company.description }}</td>
+                    <td data-field="industries">{{ company.industries }}</td>
+                    <td data-field="founded">{{ company.year_founded }}</td>
+                    <td data-field="stage">{{ company.stage }}</td>
                 </tr>
             {% empty %}
                 <p> No Companies Found </p>
             {% endfor %}
             </tbody>
         </table>
+<<<<<<< HEAD
         
         <div class="pagination">
             <span class="step-links">
@@ -120,6 +118,21 @@
                     <a href="?page={{companies.paginator.num_pages}}">last &raquo;</a>
                 {% endif %}
             </span>
+=======
+        <div class="pagination">
+            <span class="step-links">
+                     {% if companies.has_previous %}
+                        <a href="?page=1">First</a>
+                        <a href="?page={{Companies.previous_page_number}}">Previous</a>
+                    {% endif %}
+                    <span class="current">
+                       <a href=?page={{ companies.number }} of {{companies.paginator.num_pages}}</a>
+                    </span>
+                      {% if companies.has_next %}
+                        <a href="?page={{Companies.next_page_number}}">next</a>
+                        <a href="?page={{ companies.paginator.num_pages}}">Last</a>
+                    {% endif %}
+>>>>>>> developmentMaster
         </div>
     </div>
 </div>

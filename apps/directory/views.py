@@ -29,7 +29,7 @@ def index (request, sorting_string, page):
         lambdas = ''
         companies = Company.objects.order_by('submission_date')
 
-    pagintor = Paginator(companies,15)
+    paginator = Paginator(companies,15)
     companies = paginator.get_page(page)
 
     return render(request,"index.html",{'companies':companies,'lambdas':lambdas})

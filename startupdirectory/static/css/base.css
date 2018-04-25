@@ -3,7 +3,7 @@
 */
 
 html, body {
-    height: 100%;
+    min-height: 80vh;
     width: 100%;
 }
 
@@ -161,6 +161,9 @@ thead>tr>th>a{
 .fa-sort-up,
 .fa-sort-down{
     color:#337ab7;
+}
+th{
+    min-width:120px;
 }
 table .logo {
     max-height:50px;

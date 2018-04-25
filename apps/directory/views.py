@@ -4,18 +4,18 @@ from django.conf.urls.static import static
 from django.forms.models import model_to_dict
 import re
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-<<<<<<< HEAD
-=======
+
 
 # default starting page (empty url request)
 def home (request):
     companies = Company.objects.all().order_by('submission_date')
+
     paginator = Paginator(companies,15)
-    companies = paginator.get_page(1)
+    page = request.GET.get('page')
+    companies = paginator.get_page(page)
 
     return render(request,"index.html",{'companies':companies})
 
->>>>>>> developmentMaster
 
 # display list of companies sorted by date added
 def index (request, sorting_string, page):
@@ -32,17 +32,10 @@ def index (request, sorting_string, page):
         lambdas = ''
         companies = Company.objects.order_by('submission_date')
 
-<<<<<<< HEAD
-    paginator = Paginator(companies, 15)
-
+    paginator = Paginator(companies,15)
     page = request.GET.get('page')
     companies = paginator.get_page(page)
-    
-=======
-    paginator = Paginator(companies,15)
-    companies = paginator.get_page(page)
 
->>>>>>> developmentMaster
     return render(request,"index.html",{'companies':companies,'lambdas':lambdas})
 
 def profile (request, company_id):
@@ -63,18 +56,8 @@ def statistics (request):
 def search (searched_string):
     return
 
-<<<<<<< HEAD
-# checks sorting string is valid
-def isValid_sortingString ( sorting_string):
-    for field in re.findall(r'-*?[a-z_]+&*?', sorting_string):
-        if not isValid_field (field):
-            return 0
-    return 1
 
 # checks field give is valid
-=======
-# checks field give is valid 
->>>>>>> developmentMaster
 def isValid_field ( field ):
     try:
         Company._meta.get_field(field)

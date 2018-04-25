@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
- 
+
 {% block content %}
   <title>Student Startup Directory</title>
     <div class="container" id="main">
@@ -25,12 +25,12 @@
                     <th data-field="description">Description</th>
                     <th data-field="industries">
                        {% if '-industries' in lambdas %}
-                       Industries 
+                       Industries
                        <a href="{% url 'directory:index' 'industries' %}" class="sort-icon">
                             <i class="fas fa-sort-down fa-lg"></i>
                        </a>
                        {% elif 'industries' in lambdas %}
-                       Industries 
+                       Industries
                        <a href="{% url 'directory:index' '-industries' %}" class="sort-icon">
                             <i class="fas fa-sort-up fa-lg"></i>
                        </a>
@@ -40,7 +40,7 @@
                     </th>
                     <th data-field="founded">
                        {% if '-year_founded'  in lambdas %}
-                       Year Founded 
+                       Year Founded
                        <a href="{% url 'directory:index' 'year_founded' %}" class="sort-icon">
                             <i class="fas fa-sort-down fa-lg"></i>
                        </a>
@@ -73,7 +73,7 @@
             <tr class="{% cycle 'odd' 'even' %}">
                     <td data-field="logo">
                         <a href="profile/{{ company.id }}">
-                        <img class="logo" src="media/{{ company.logo }}"></a></td>   
+                        <img class="logo" src="media/{{ company.logo }}"></a></td>
                     <td data-field="name">
                         <a href="profile/{{ company.id }}">{{ company.name }} </a> </td>
                     <td data-field="description">{{ company.description }}</td>
@@ -86,8 +86,8 @@
             {% endfor %}
             </tbody>
         </table>
-<<<<<<< HEAD
-        
+
+
         <div class="pagination">
             <span class="step-links">
                 {% if companies.has_previous %}
@@ -96,30 +96,14 @@
                 {% endif %}
 
                 <span class="current">
-                    Page {{ companies.number }} of {{ companies.paginator.num_pages }} 
+                    Page {{ companies.number }} of {{ companies.paginator.num_pages }}
                 </span>
 
                 {% if companies.has_next %}
                     <a href="?page={{ companies.next_page_number}}">next</a>
                     <a href="?page={{companies.paginator.num_pages}}">last &raquo;</a>
                 {% endif %}
-            </span>
-=======
-        <div class="pagination">
-            <span class="step-links">
-                     {% if companies.has_previous %}
-                        <a href="?page=1">First</a>
-                        <a href="?page={{Companies.previous_page_number}}">Previous</a>
-                    {% endif %}
-                    <span class="current">
-                       <a href=?page={{ companies.number }} of {{companies.paginator.num_pages}}</a>
-                    </span>
-                      {% if companies.has_next %}
-                        <a href="?page={{Companies.next_page_number}}">next</a>
-                        <a href="?page={{ companies.paginator.num_pages}}">Last</a>
-                    {% endif %}
->>>>>>> developmentMaster
+            </span> 
         </div>
-    </div>
 </div>
 {% endblock %}

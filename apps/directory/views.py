@@ -3,17 +3,24 @@ from .models import Company
 from django.conf.urls.static import static
 from django.forms.models import model_to_dict
 import re
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+# default starting page (empty url request)
+def home (request):
+    companies = Company.objects.all().order_by('submission_date')
+    paginator = Paginator(companies,15)
+    companies = paginator.get_page(1)
+
+    return render(request,"index.html",{'companies':companies})
+
 
 # display list of companies sorted by date added
 def index (request, sorting_string, page):
-    print( 'sort string is : '+ sorting_string)
     companies = Company.objects.all()
     if sorting_string != '':
         # extracts multiple sort lambdas
         lambdas = re.findall(r'[-a-z_]+', sorting_string)
-        print( lambdas)
         for sortby in lambdas:
-            print("sortby is " + sortby)
             if lambdas == 'funding':
                 companies = companies.order_by('funding').order_by('funding_unit')
             else:
@@ -21,6 +28,10 @@ def index (request, sorting_string, page):
     else:
         lambdas = ''
         companies = Company.objects.order_by('submission_date')
+
+    pagintor = Paginator(companies,15)
+    companies = paginator.get_page(page)
+
     return render(request,"index.html",{'companies':companies,'lambdas':lambdas})
 
 def profile (request, company_id):
@@ -35,19 +46,11 @@ def profile (request, company_id):
 def columns(request):
     return
 
-
 def statistics (request):
     return
 # displays a list of comapnies, founders, 
 def search (searched_string):
     return
-
-# checks sorting string is valid
-def isValid_sortingString ( sorting_string):
-    for field in re.findall(r'-*?[a-z_]+&*?', sorting_string):
-        if not isValid_field (field):
-            return 0
-    return 1
 
 # checks field give is valid 
 def isValid_field ( field ):

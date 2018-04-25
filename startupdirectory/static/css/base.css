@@ -149,10 +149,18 @@ even {
 odd {
     background:white;
 }
-thead {
+thead{
     color:white;
     background: -webkit-linear-gradient(135deg,#35a3db 2%,#12d9e8 100%);
     background: linear-gradient(135deg,#35a3db 2%,#12d9e8 100%);
+}
+thead>tr>th>a{
+    color:white;
+}
+.fa-sort,
+.fa-sort-up,
+.fa-sort-down{
+    color:#337ab7;
 }
 table .logo {
     max-height:50px;

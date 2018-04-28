@@ -1,22 +1,21 @@
 {% load static %}
-{% load compress %}
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta property="og:title" content="Textbook Ventures' Directory"/>
+      <meta property="og:type" content="website"/>
+      <meta property="og:url" content="http://textbook.ventures/"/>
+      <meta property="og:site_name" content="Textbook Ventures'"/>
+      <meta property="og:description" content="Connecting Student Founders"/>
+      <meta property="og:image" content="{% static 'img/textbook-ventures-icon.png' %}"/>
 
-    <meta name="description" content="{% block meta_description %}{% endblock %}">
-    <meta name="author" content="{% block meta_author %}{% endblock %}">
-
-    <title>{% block page_title %}{% endblock %}</title>
-
+    {% load compress %}
+    {% compress css %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">  
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-  
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% endcompress %}
    {% compress js %}
     <script src="{% static 'js/app.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -28,7 +27,8 @@
 <body>
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
+        <!-- Nav Menu -->
+        <div class="mobile-header">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
                     <span class="sr-only">Toggle Navigation</span>
@@ -38,7 +38,6 @@
                 </button>
                 <a class="navbar-brand" href="http://textbook.ventures"><img id="nav-img"class ="img-responsive" src="{% static 'img/textbook-ventures.png' %}"></a>
             </div>
-            <!-- Nav Menu -->
             <div class="collapse navbar-collapse" id="navbar-collapse-main">
                 <ul class="nav navbar-nav">
                     <li class="menu-item">
@@ -73,6 +72,47 @@
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="masthead">
+            <div class="nav-bar-wrapper">
+                <div class="logo">
+                    <a href="http://textbook.ventures">
+                        <img class ="img-responsive" src="{% static 'img/textbook-ventures.png' %}">
+                    </a>
+                </div>
+                <ul class="menu">
+                   <li class="menu-item">
+                       <a class="active" href="http://textbook.ventures/#about">
+                           <span class="menu-item-text">
+                               <span class="menu-text">Our Mission</span></span></a>
+                   </li>
+                   <li class="menu-item">
+                       <a class="active" href="http://textbook.ventures/#initiatives">
+                           <span class="menu-item-text">
+                               <span class="menu-text">Our Initiatives</span></span></a>
+                   </li>
+                   <li class="menu-item">
+                       <a class="active" href="http://textbook.ventures/#sponsors">
+                           <span class="menu-item-text">
+                               <span class="menu-text">Sponsors</span></span></a>
+                   </li>
+                   <li class="menu-item">
+                       <a class="active" href="http://textbook.ventures/#testimonials">
+                           <span class="menu-item-text">
+                               <span class="menu-text">Testimonials</span></span></a>
+                   </li>
+                   <li class="menu-item">
+                       <a class="active" href="http//directory.textbook.ventures">
+                           <span class="menu-item-text">
+                               <span class="menu-text">Directory</span></span></a>
+                   </li>
+                   <li class="menu-item">
+                       <a class="active" href="http://textbook.ventures/#contact">
+                           <span class="menu-item-text">
+                               <span class="menu-text">Contact</span></span></a>
+                   </li>
+               </ul>
+            <div>
         </div>
     </nav>
 

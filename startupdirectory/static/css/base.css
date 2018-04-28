@@ -21,53 +21,52 @@ a: {
 /*
     Top Nav Bar
 */
-
-.navbar .nav {
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-top: 15px;
-    display: table;
-    width: 90%;
-}
-
-.navbar-nav > li{
-    display: table-cell;
-    float: none;
-    text-align: center;
-}
-
-.navbar {
-    background-color: white;
-    font-size: 1.2em;
-    max-height: 150px;
-    border: 0 !important;
+.masthead{
+    display:block;
+    background:white;
     box-shadow: 0 0 15px 1px rgba(0,0,0,.07);
+    height:65px;
 }
-
+.nav-bar-wrapper{
+    max-width:1200px;
+    margin:auto;
+    padding: 0px 50px;
+    display:flex;
+    -webkit-flex-flow: row nowrap;
+    -moz-flex-flow: row nowrap;
+    -ms-flex-flow: row nowrap;
+    justify-content: center;
+}
+.menu {
+    flex-grow: 1;
+    display:flex;
+    -webkit-flex-flow: row nowrap;
+    -moz-flex-flow: row nowrap;
+    -ms-flex-flow: row nowrap;
+    list-style:none;
+    justify-content:space-between;
+    text-align:center;
+}
+.menu-logo{
+    padding-right:18px;
+}
 .menu-item {
-    text-transform: none;
     margin: 18px 14px 18px 14px;
     padding: 4px 4px 4px 4px;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: -ms-flex;
-    display: flex;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    -ms-flex-align: center;
+    justify-content:flex-end;
     align-items: center;
-    -webkit-align-content: center;
-    -moz-align-content: center;
-    -ms-align-content: center;
     align-content: center;
-    -ms-flex-line-pack: stretch;
     flex-grow:1;
     position: relative;
 }
+.menu-link{
+    display:block;
+    cursor:pointer;
+}
 .menu-item-text {
+    word-spacing:0;
+    display:block;
+    align-items:center;
     color: darkgray;
     font-weight: 500;
     font: normal bold 17px / 21px "Roboto Condensed", Helvetica, Arial, Verdana, sans-serif;
@@ -91,6 +90,32 @@ a: {
     transform: translateY(10px);
 }
 
+.mobile-header{
+    display:none;
+}
+.navbar .nav {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-top: 15px;
+    display: table;
+    width: 90%;
+}
+
+.navbar-nav > li{
+    display: table-cell;
+    float: none;
+    text-align: center;
+}
+
+.navbar {
+    background-color: white;
+    font-size: 1.2em;
+    max-height: 150px;
+    border: 0 !important;
+    box-shadow: 0 0 15px 1px rgba(0,0,0,.07);
+}
+
 #nav-img .img-responsive {
     height: auto;
     width: auto;
@@ -101,6 +126,9 @@ a: {
 /**
     nav bar effects
 */
+.menu-item a:hover{
+    text-decoration:none;
+}
 .menu-item a:hover .menu-item-text,
 .menu-item a:active .menu-item-text{
     background: linear-gradient(135deg,#35a3db 30%,#12d9e8 100%) ;
@@ -276,3 +304,13 @@ footer {
 /*
     Mobile CSS
 */
+
+@media max-width:756px; {
+    mobile-header{
+        display:block;
+    }
+    masthead{
+        display:none;
+    }
+
+}

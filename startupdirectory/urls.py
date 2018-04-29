@@ -16,8 +16,6 @@ sitemaps = {
 }
 
 urlpatterns = [
-    # All requests go to directory.urls
-    url(r'', include('directory.urls'), name="index"),
     # Admin
     url(r'^admin/', admin.site.urls),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -32,6 +30,10 @@ urlpatterns = [
             template_name='robots.txt',
             content_type='text/plain')
         ),
+
+    # All requests go to directory.urls
+    url(r'', include('directory.urls'), name="index"),
+
 ]
 
 if settings.DEBUG:

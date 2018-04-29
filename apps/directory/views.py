@@ -36,26 +36,32 @@ def index (request, sorting_string, page):
     page = request.GET.get('page')
     companies = paginator.get_page(page)
 
-    return render(request,"index.html",{'companies':companies,'lambdas':lambdas})
+    return render (request,"index.html",{'companies':companies,'lambdas':lambdas})
 
 def profile (request, company_id):
 #   fetches a company based on id
     company_obj = get_object_or_404(Company,pk=company_id)
     company = model_to_dict(company_obj)
     company['founders'] = company['founders'].split(',')
-    return render(request,'profile.html',{'company':company})
+    return render (request,'profile.html',{'company':company})
 
+def search ():
+    return
 
 # modify displayed information
-def columns(request):
+def columns (request):
     return
 
 def statistics (request):
     return
-# displays a list of comapnies, founders,
+
+def field_filter (request, field, filter):
+    companies_obj = Company.objects.filter(**{field:filter})
+    print(field + filter)
+    return render (request,'index.html',{'companies':companies_obj})
+
 def search (searched_string):
     return
-
 
 # checks field give is valid
 def isValid_field ( field ):

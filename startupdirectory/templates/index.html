@@ -4,6 +4,15 @@
   <title>Student Startup Directory</title>
     <div class="row">
         <h1>Student Startup Directory</h1>
+        <div class="filter-form" >
+            <form action="/" method="get">
+                <label for="industry">industry</label>
+                <select>
+                    <option value="" selected="selected">—</option>
+                    <option value=""></option>
+                </select>
+            </form>
+        </div>
         <table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">
             <thead>
                 <tr>
@@ -71,14 +80,22 @@
             {% for company in companies %}
             <tr class="{% cycle 'odd' 'even' %}">
                     <td data-field="logo">
-                        <a href="profile/{{ company.id }}">
-                        <img class="logo" src="media/{{ company.logo }}"></a></td>
+                        <a href="{% url 'directory:profile' company.id %}">
+                            <img class="logo" src="media/{{ company.logo }}"></a></td>
                     <td data-field="name">
-                        <a href="profile/{{ company.id }}">{{ company.name }} </a> </td>
+                        <a href="{% url 'directory:profile' company.id %}">{{ company.name }}</a> </td>
                     <td data-field="description">{{ company.description }}</td>
                     <td data-field="industries">{{ company.industries }}</td>
-                    <td data-field="founded">{{ company.year_founded }}</td>
-                    <td data-field="stage">{{ company.stage }}</td>
+                    <td data-field="founded">
+                        {% if company.year_founded %}
+                        <a href="{% url 'directory:field_filter' 'year_founded' company.year_founded %}">{{company.year_founded}}</a>
+                        {% endif %}
+                    </td>
+                    <td data-field="stage">
+                        {% if company.stage %}
+                        <a href="{% url 'directory:field_filter' 'stage' company.stage %}">{{company.stage}}</a>
+                        {% endif %}
+                    </td>
                 </tr>
             {% empty %}
                 <p> No Companies Found </p>

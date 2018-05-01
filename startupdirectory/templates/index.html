@@ -9,8 +9,23 @@
                 <label for="industry">industry</label>
                 <select>
                     <option value="" selected="selected">—</option>
-                    <option value=""></option>
+                    {% for industry in industries %}
+                    <option value="">{{ industry }}</option>
+                    {% endfor %}
                 </select>
+                 <label for="stage">stage</label>
+                <select>
+                    <option value="" selected="selected">—</option>
+                    {% for stage in funding_stages  %}
+                    <option value="">{{ stage }}</option>
+                    {% endfor %}
+                </select>
+
+                <select>
+                    <label for="founded_year">Year</label>
+                    <input type="number" name="year" min="1950" max="2018">
+                </select>
+                <input type="submit"><input type="clear filters">
             </form>
         </div>
         <table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">

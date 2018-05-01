@@ -13,6 +13,7 @@ def home (request):
     paginator = Paginator(companies,15)
     page = request.GET.get('page')
     companies = paginator.get_page(page)
+    options = fields_dict()
 
     return render(request,"index.html",{'companies':companies})
 
@@ -35,38 +36,40 @@ def index (request, sorting_string, page):
     paginator = Paginator(companies,15)
     page = request.GET.get('page')
     companies = paginator.get_page(page)
+    options = fields_dict()
 
     return render (request,"index.html",{'companies':companies,'lambdas':lambdas})
 
-def profile (request, company_id):
+
 #   fetches a company based on id
+def profile (request, company_id):
     company_obj = get_object_or_404(Company,pk=company_id)
     company = model_to_dict(company_obj)
     company['founders'] = company['founders'].split(',')
+
     return render (request,'profile.html',{'company':company})
-
-def search ():
-    return
-
-# modify displayed information
-def columns (request):
-    return
-
-def statistics (request):
-    return
 
 def field_filter (request, field, filter):
     companies_obj = Company.objects.filter(**{field:filter})
-    print(field + filter)
-    return render (request,'index.html',{'companies':companies_obj})
+    options = fields_dict()
+
+    return render (request,'index.html',{'companies':companies_obj,'options':options})
+
 
 def search (searched_string):
     return
 
-# checks field give is valid
-def isValid_field ( field ):
-    try:
-        Company._meta.get_field(field)
-    except:
-        return 0
-    return 1
+
+# returns an immutable list of all options for a field
+def options_list (field):
+    options = Company.objects.__meta.get(field).choices
+
+    return options
+
+
+# returns a dictionary of field options for a field
+def fields_dict ():
+    for field in Company.objects.__meta.get_fields():
+        dict[field] = options_list (field)
+
+    return dict

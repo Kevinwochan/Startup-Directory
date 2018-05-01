@@ -12,7 +12,8 @@ urlpatterns = [
     url(r'^sortby=(?P<sorting_string>-?year_founded)(&page=(?P<page>\d+))?$',index, name='index'),
     url(r'^sortby=(?P<sorting_string>-?stage)(&page=(?P<page>\d+))?$',index, name='index'),
     url(r'^sortby=(?P<sorting_string>-?funding)(&page=(?P<page>\d+))?$',index, name='index'),
-    url('^profile/(?P<company_id>\d+)$', profile,name='profile'),
-    url(r'filter-(?P<field>\w+)=(?P<filter>[\w-]+)',field_filter, name='field_filter'),
+    url(r'^profile/(?P<company_id>\d+)$', profile, name='profile'),
+    url(r'^(?P<field>\w+)=(?P<category>[\w-]+)',show_category, name='show_category'),
+    url(r'^filter(?P<filter_string>.*)$',filter, name='filter'),
     url(r'^$',home, name='home'),
 ]

@@ -3,16 +3,33 @@ from datetime import date, datetime
 from django.db import models
 
 # creates dyamic set of choices for founded date
-YEAR_CHOICES = []
+YEAR_CHOICES = [] 
 for r in range(2010, (datetime.now().year+1)):
         YEAR_CHOICES.append((r,r))
 
 # creates a set of choices for funding units, k for 1 000, m for 1,000,000 etc
-UNIT_CHOICES = ('','K','M','B')
+UNIT_LIST = (['Undisclosed','Undisclosed'],['K','K'],['M','M'],['B','B'])
+UNIT_CHOICES = []
+for r in UNIT_LIST:
+    UNIT_CHOICES.append((r,r))
 
-FUNDING_CHOICES = ('','Ideation','MVP','Seed', 'SeriesA', 'SeriesB', 'SeriesC', 'SeriesD', 'SeriesE', 'SeriesF', 'SeriesG', 'SeriesH', 'SeriesI', 'SeriesJ', 'Venture-SeriesUnknown', 'Angel', 'PrivateEquity', 'DebtFinancing', 'ConvertibleNote', 'Grant', 'CorporateRound', 'EquityCrowdfunding', 'ProductCrowdfunding', 'SecondaryMarket', 'Post-IPOEquity', 'Post-IPODebt', 'Post-IPOSecondary', 'Non-equityAssistance', 'InitialCoinOffering', 'Undisclosed', )
 
-INDUSTRY_CHOICES = ('','Advertising', 'Aerospace', 'Agriculture', 'Analytics', 'Android', 'Apps', 'Art', 'ArtificialIntelligence', 'Association', 'Automotive', 'B2B', 'Banking', 'Beauty', 'BigData', 'Biotechnology', 'BloggingPlatforms', 'BrandMarketing', 'BuildingMaterial', 'BusinessDevelopment', 'BusinessIntelligence', 'CloudComputing', 'Communities', 'Computer', 'Construction', 'Consulting', 'ConsumerElectronics', 'Content', 'CRM', 'CustomerService', 'CyberSecurity', 'Database', 'DataVisualization', 'Delivery', 'DeveloperAPIs', 'DeveloperPlatform', 'DeveloperTools', 'DigitalEntertainment', 'DigitalMarketing', 'DigitalMedia', 'Drones', 'Fashion', 'FileSharing', 'Film', 'Finance', 'FinancialServices', 'FinTech', 'Fitness', 'FoodandBeverage', 'FoodProcessing', 'Furniture', 'Gambling', 'Gamification', 'Gaming', 'GenerationY', 'GenerationZ', 'Genetics', 'Geospatial', 'Gift', 'GiftCard', 'Government', 'GraphicDesign', 'GreenTech', 'Hardware', 'HealthCare', 'HealthDiagnostics', 'HigherEducation', 'HomeDecor', 'HomeServices', 'Hospital', 'Hospitality', 'Hotel', 'HumanResources', 'Incubators', 'Industrial', 'InformationServices', 'InformationTechnology', 'Infrastructure', 'InnovationManagement', 'Insurance', 'Internet', 'InternetofThings', 'iOS', 'JanitorialService', 'Jewelry', 'Journalism', 'KnowledgeManagement', 'LanguageLearning', 'LawEnforcement', 'LeadGeneration', 'Legal', 'Leisure', 'LifeScience', 'Lifestyle', 'Local', 'LocationBasedServices', 'Logistics', 'MachineLearning', 'Manufacturing', 'Marketing', 'Marketplace', 'MediaandEntertainment', 'Medical', 'MedicalDevice', 'Mobile', 'MobileApps', 'Music', 'OilandGas', 'OnlineAuctions', 'OnlineGames', 'OnlinePortals', 'OpenSource', 'OpticalCommunication', 'Organic', 'OrganicFood', 'Outdoors', 'Outsourcing', 'Payments', 'Pharmaceutical', 'Photography', 'PredictiveAnalytics', 'Printing', 'ProductDesign', 'ProfessionalServices', 'ProjectManagement', 'PublicRelations', 'Publishing', 'Q&amp;A', 'QRCodes', 'QualityAssurance', 'QuantifiedSelf', 'RealEstate', 'RealEstateInvestment', 'RealTime', 'Recruiting', 'RenewableEnergy', 'Restaurants', 'Retail', 'RetailTechnology', 'RiskManagement', 'Robotics', 'SaaS', 'SearchEngine', 'Security', 'SEO', 'ServiceIndustry', 'Shopping', 'SocialMedia', 'SocialNetwork', 'Software', 'Sports', 'Telecommunications', 'TestandMeasurement', 'Therapeutics', 'Ticketing', 'Tourism', 'TradingPlatform', 'Training', 'Transportation', 'Travel', 'Tutoring', 'UltimateFrisbee', 'UnderservedChildren', 'UnifiedCommunications', 'Universities', 'UsabilityTesting', 'UXDesign', 'VentureCapital', 'Video', 'VideoChat', 'VideoConferencing', 'VideoGames', 'VideoonDemand', 'VideoStreaming', 'Virtualization', 'VirtualReality', 'VoIP', 'Water', 'Wearables', 'WebApps', 'WebBrowsers', 'WebDesign', 'WebDevelopment', 'WebHosting', 'Wellness', 'Wholesale', 'Wireless', 'Xbox', 'YoungAdults',)
+#FUNDING_LIST = ('Ideation','MVP','Seed', 'SeriesA', 'SeriesB', 'SeriesC', 'SeriesD', 'SeriesE', 'SeriesF', 'SeriesG', 'SeriesH', 'SeriesI', 'SeriesJ', 'Venture-SeriesUnknown', 'Angel', 'PrivateEquity', 'DebtFinancing', 'ConvertibleNote', 'Grant', 'CorporateRound', 'EquityCrowdfunding', 'ProductCrowdfunding', 'SecondaryMarket', 'Post-IPOEquity', 'Post-IPODebt', 'Post-IPOSecondary', 'Non-equityAssistance', 'InitialCoinOffering', 'Undisclosed', )
+FUNDING_LIST = ('Pre-product','Pre-launch','Launch','Revenue')
+FUNDING_CHOICES = []
+for r in FUNDING_LIST:
+    FUNDING_CHOICES.append((r,r))
+
+
+INDUSTRY_LIST = ("Advertising","Agriculture","Apps","Artificial Intelligence","Biotechnology",
+        "Consumer Electronics","E-Commerce","Education","FinTech","Food and Beverage",
+        "Health Care","Health Diagnostics","Human Resources","Industrial","Internet of Things",
+        "Marketplace","Mobile Apps","Quality Assurance","Retail","Space","Sports","Tourism",
+        "Transportation")
+INDUSTRY_CHOICES=[]
+for r in INDUSTRY_LIST:
+    INDUSTRY_CHOICES.append((r,r))
+
 
 class Company (models.Model):
 # name of startup
@@ -22,20 +39,21 @@ class Company (models.Model):
 # what year the company launched
     year_founded = models.IntegerField(choices=YEAR_CHOICES, default=datetime.now().year)
 # names of founders seperated by commas e.g ('Kevin Chan, Anmol Singh')
-    founders = models.CharField(max_length=200,default='')
+    founders = models.CharField(max_length=100,default='')
 # current startup's funding stage e.g ('Series A, Incubation.')
-    stage = models.CharField(max_length=200,choices=FUNDING_CHOICES,default='')
+    stage = models.CharField(max_length=50, choices=FUNDING_CHOICES, default='Undisclosed')
 # date of submission, generated by the django app
     submission_date = models.DateTimeField(default=timezone.now)
 # industries/sectors business operates in seperated by commas e.g{'Fintech, Agriculture')
-    industries = models.CharField(max_length=200, choices=INDUSTRY_CHOICES, default='')
+    industries = models.CharField(max_length=50,choices=INDUSTRY_CHOICES, default='')
 # url to company's website
-    website = models.URLField(max_length=200,default='')
+    website = models.URLField(default='')
 # contact email for the company
-    email = models.EmailField(max_length=200,default='')
+    email = models.EmailField(default='')
 # logo in the form of png or jpeg
     logo = models.ImageField(upload_to='logos',default="logos/undefined.png")
 # amount of funding recieved
     funding = models.PositiveSmallIntegerField(default=0)
 # the units of funding
-    funding_unit = models.CharField(max_length=1,default='')
+    funding_unit = models.CharField(max_length=11,choices=FUNDING_CHOICES,default='Undisclosed')
+

@@ -6,29 +6,18 @@
         <h1>Student Startup Directory</h1>
         <div class="filter-form form-group" >
             <form action="/filter" method="GET">
+
                 <label for="industry">Industry</label>
-                <select class="form-control">
-                    <option value="" selected="selected">—</option>
-                    {% for industry in options.industries %}
-                    <option value="{{ industry }}">{{ industry }}</option>
-                    {% endfor %}
-                </select>
+                    {{ filter_form.industry }}
+
                 <label for="stage">Stage</label>
-                <select class="form-control">
-                    <option value="" selected="selected">—</option>
-                    {% for stage in options.stage %}
-                    <option value="{{ stage }}">{{ stage }}</option>
-                    {% endfor %}
-                </select>
-                <label for="founded_year">Year</label>
-                <select class="form-control">
-                    <option value="" selected="selected">—</option>
-                    {% for year in options.year_founded %}
-                    <option value="{{ year }}">{{ year }}</option>
-                    {% endfor %}
-                </select>
+                    {{ filter_form.stage }}
+
+                <label for="year_founded">Year</label>
+                    {{ filter_form.year }}
                 <input type="submit" class="btn btn-default" value="Submit">
                 <input type="reset" class="btn btn-default" value="Clear Filters">
+
             </form>
         </div>
         <table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">

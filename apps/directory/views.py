@@ -1,6 +1,7 @@
 from django import forms
 from django.shortcuts import render, get_object_or_404
 from .models import Company
+from .forms import filterForm
 from django.conf.urls.static import static
 from django.forms.models import model_to_dict
 import re
@@ -13,8 +14,9 @@ def home (request):
     page = request.GET.get('page')
     companies = paginator.get_page(page)
     options = filter_options()
+    form = filterForm()
 
-    return render(request,"index.html",{'companies':companies,'options':options})
+    return render(request,"index.html",{'companies':companies,'options':options,'filter_form':filterForm})
 
 
 # display list of companies sorted by date added
@@ -56,11 +58,21 @@ def show_category (request, field, category):
    return render (request,'index.html',{'companies':companies_obj,'options':options})
 
 # display companies matching filters
-def filter (request, filter_string):
-    industry = request.GET.get('industry')
-    stage = request.GET.get('stage')
-    founded_year = request.GET.get('founded_year')
-    companies_obj = Company.objects.filter('industry',industry)
+def filter (request):
+    industry_filter = request.GET.get('industry')
+    stage_filter = request.GET.get('stage')
+    year_founded_filter = request.GET.get('year_founded')
+
+    companies_obj = Company.objects
+    if industry_filter:
+        companies_obj = companies_obj.filter(industries=industry_filter)
+    if stage_filter:
+        companies_obj = companies_obj.filter(industries=stage_filter)
+    if year_founded_filter:
+        companies_obj = companies_obj.filter(industries=year_founded_filter)
+
+
+
     options = filter_options()
 
     return render (request,'index.html',{'companies':companies_obj,'options':options})

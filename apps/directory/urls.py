@@ -14,6 +14,6 @@ urlpatterns = [
     url(r'^sortby=(?P<sorting_string>-?funding)(&page=(?P<page>\d+))?$',index, name='index'),
     url(r'^profile/(?P<company_id>\d+)$', profile, name='profile'),
     url(r'^(?P<field>\w+)=(?P<category>[\w-]+)',show_category, name='show_category'),
-    url(r'^filter(?P<filter_string>.*)$',filter, name='filter'),
+    url(r'^filter',filter, name='filter'),
     url(r'^$',home, name='home'),
 ]

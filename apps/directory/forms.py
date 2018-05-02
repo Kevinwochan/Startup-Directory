@@ -1,11 +1,13 @@
 from django import forms
+from directory.choices import *
 
 class filterForm(forms.Form):
-    industry = forms.CharField(label='industry')
-    stage = forms.CharField(label='stage')
-    year = forms.CharField(label='year_founded')
+    industry = forms.ChoiceField(choices=INDUSTRY_CHOICES)
+    stage = forms.ChoiceField(choices=FUNDING_CHOICES)
+    year = forms.ChoiceField(choices=YEAR_CHOICES)
 
 
+'''
 <form action="/filter" method="GET">
                 {% csrf token %}
                 <label for="industry">Industry</label>
@@ -32,4 +34,4 @@ class filterForm(forms.Form):
                 <input type="submit" class="btn btn-default" value="Submit">
                 <input type="reset" class="btn btn-default" value="Clear Filters">
             </form>
-
+'''

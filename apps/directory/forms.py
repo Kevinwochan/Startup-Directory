@@ -2,9 +2,20 @@ from django import forms
 from directory.choices import *
 
 class filterForm(forms.Form):
-    industry = forms.ChoiceField(choices=INDUSTRY_CHOICES)
-    stage = forms.ChoiceField(choices=FUNDING_CHOICES)
-    year = forms.ChoiceField(choices=YEAR_CHOICES)
+    industry = forms.ChoiceField(choices=INDUSTRY_CHOICES,
+        label="industry",
+        widget=forms.Select(attrs={'class': "form-control"}),
+        required=False)
+
+    stage = forms.ChoiceField(choices=FUNDING_CHOICES,
+        label="stage",
+        widget=forms.Select(attrs={'class': "form-control"}),
+        required=False)
+
+    year = forms.ChoiceField(choices=YEAR_CHOICES,
+        label="year",
+        widget=forms.Select(attrs={'class': "form-control"}),
+        required=False)
 
 
 '''

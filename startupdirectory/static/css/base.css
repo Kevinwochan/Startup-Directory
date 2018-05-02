@@ -1,4 +1,4 @@
-/*
+o*
     Document Settings
 */
 
@@ -13,10 +13,14 @@ html, body {
 h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, {
         color: #08094c;
 }
-a: {
-
+a:hover{
+    text-decoration:none !important;
 }
-
+.page-title{
+    text-align:center;
+    color: #08094c;
+    font-weight:bold;
+}
 
 /*
     Top Nav Bar
@@ -168,8 +172,43 @@ html, body, body.page, .container > * {
     word-spacing: normal;
     color: #37374c;
 }
+.prologue{
+    width:100%;
+    display:block;
+}
+.filter-form{
+    width:300px;
+}
+.filter-form input{
+    width100%;
+}
+.filter-form .btn{
+    margin:10px 10px 0px 0px;
+}
 body {
     padding-top: 65px;
+}
+.pre-table{
+    display:block;
+    margin: 10px 0px;
+}
+.pagination{
+    display:inline;
+}
+.paginator-btn{
+    color:#337ab7;
+    border:1px #337ab7;
+    border-radius:3px;
+    padding:5px;
+    display:inline;
+}
+.paginator-btn-active, .registration-form, .registration-form a{
+    color:white;
+    border:1px black;
+    border-radius:3px;
+    padding:5px 6px;
+    background: #337ab7;
+    display:inline;
 }
 even {
     background: grey;
@@ -196,6 +235,10 @@ table .logo {
     max-height:50px;
     height:auto;
     width: auto;
+}
+.company-name{
+    color:#07084a;
+    font-weight:bold;
 }
 .bordered {
     border: #000000 thin solid;

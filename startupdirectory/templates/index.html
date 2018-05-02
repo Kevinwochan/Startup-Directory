@@ -1,138 +1,143 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <title>Student Startup Directory</title>
-    <div class="row">
-        <h1>Student Startup Directory</h1>
+<title>Student Startup Directory</title>
+<div class="row">
+    <h1 class="page-title">Student Startup Directory</h1>
+
+    <div class="prologue">
         <div class="filter-form form-group" >
             <form action="/filter" method="GET">
-
                 <label for="industry">Industry</label>
                     {{ filter_form.industry }}
-
                 <label for="stage">Stage</label>
                     {{ filter_form.stage }}
-
                 <label for="year_founded">Year</label>
                     {{ filter_form.year }}
-                <input type="submit" class="btn btn-default" value="Submit">
-                <input type="reset" class="btn btn-default" value="Clear Filters">
+                <input type="submit" class="form-group btn btn-primary" value="Submit">
+                <input type="reset" class="form-group btn btn-default" value="Clear Filters">
 
             </form>
         </div>
-        <table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">
-            <thead>
-                <tr>
-                    <th data-field="logo">Logo</th>
-                    <th data-field="name">
-                       {% if '-name' in lambdas %}
-                       Name <a href="{% url 'directory:index' 'name' %}" class="sort-icon">
-                            <i class="fas fa-sort-down fa-lg"></i>
-                       </a>
-                       {% elif 'name' in lambdas %}
-                       Name <a href="{% url 'directory:index' '-name' %}" class="sort-icon">
-                            <i class="fas fa-sort-up fa-lg"></i>
-                       </a>
-                       {% else %}
-                       <a href="{% url 'directory:index' 'name' %}">Name <i class="fas fa-sort fa-lg"></i></a>
-                       {% endif %}
-                    </th>
-                    <th data-field="description">Description</th>
-                    <th data-field="industries">
-                       {% if '-industries' in lambdas %}
-                       Industries
-                       <a href="{% url 'directory:index' 'industries' %}" class="sort-icon">
-                            <i class="fas fa-sort-down fa-lg"></i>
-                       </a>
-                       {% elif 'industries' in lambdas %}
-                       Industries
-                       <a href="{% url 'directory:index' '-industries' %}" class="sort-icon">
-                            <i class="fas fa-sort-up fa-lg"></i>
-                       </a>
-                       {% else %}
-                       <a href="{% url 'directory:index' 'industries' %}">Industries <i class="fas fa-sort fa-lg"></i></a>
-                       {% endif %}
-                    </th>
-                    <th data-field="founded">
-                       {% if '-year_founded'  in lambdas %}
-                       Founded
-                       <a href="{% url 'directory:index' 'year_founded' %}" class="sort-icon">
-                            <i class="fas fa-sort-down fa-lg"></i>
-                       </a>
-                       {% elif 'year_founded'  in lambdas %}
-                       Founded
-                        <a href="{% url 'directory:index' '-year_founded' %}" class="sort-icon">
-                            <i class="fas fa-sort-up fa-lg"></i>
-                       </a>
-                       {% else %}
-                       <a href="{% url 'directory:index' 'year_founded' %}">Founded <i class="fas fa-sort fa-lg"></i></a>
-                       {% endif %}
-                    </th>
-                    <th data-field="stage">
-                       {% if '-stage' in lambdas %}
-                       Stage <a href="{% url 'directory:index' 'stage' %}" class="sort-icon">
-                            <i class="fas fa-sort-down fa-lg"></i>
-                       </a>
-                       {% elif 'stage' in lambdas %}
-                        Stage <a href="{% url 'directory:index' '-stage' %}" class="sort-icon">
-                            <i class="fas fa-sort-up fa-lg"></i>
-                       </a>
-                       {% else %}
-                       <a href="{% url 'directory:index' 'stage' %}">Stage <i class="fas fa-sort fa-lg"></i></a>
-                       {% endif %}
-                    </th>
-               </tr>
-            </thead>
-            <tbody>
-            {% for company in companies %}
-            <tr class="{% cycle 'odd' 'even' %}">
-                    <td data-field="logo">
-                        <a href="{% url 'directory:profile' company.id %}">
-                            <img class="logo" src="media/{{ company.logo }}"></a></td>
-                    <td data-field="name">
-                        <a href="{% url 'directory:profile' company.id %}">{{ company.name }}</a> </td>
-                    <td data-field="description">{{ company.description }}</td>
-                    <td data-field="industries">
-                        {% if company.industries %}
-                        <a href="{% url 'directory:show_category' 'industries' company.industries %}">{{company.industries}}</a>
-                        {% endif %}
-                    </td>
- 
-                    <td data-field="founded">
-                        {% if company.year_founded %}
-                        <a href="{% url 'directory:show_category' 'year_founded' company.year_founded %}">{{company.year_founded}}</a>
-                        {% endif %}
-                    </td>
-                    <td data-field="stage">
-                        {% if company.stage %}
-                        <a href="{% url 'directory:show_category' 'stage' company.stage %}">{{company.stage}}</a>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% empty %}
-                <p> No Companies Found </p>
-            {% endfor %}
-            </tbody>
-        </table>
+      </div>
 
-        {% if companies.paginator.num_pages <= 1 %}
-        <div class="pagination">
+    <div class="pre-table"> 
+        <div class="pagination col-lg-4">
+            {% if companies.has_other_pages %}
             <span class="step-links">
                 {% if companies.has_previous %}
-                    <a href="?page=1">&laquo; first</a>
-                    <a href="?page={{companies.previous_page_number}}">previous</a>
+                <a href="?page=1">
+                    <div class="paginator-btn">1</div>
+                </a>
+                <a href="?page={{companies.previous_page_number}}">
+                    <div class="paginator-btn">Prev</div>
+                </a>
+                <span class="current">... {% endif %}<div class="paginator-btn-active">{{ companies.number }}</div>{% if companies.has_next %} ...</span>
+                <a href="?page={{ companies.next_page_number}}">
+                    <div class="paginator-btn">Next</div></a>
+                <a href="?page={{companies.paginator.num_pages}}">
+                    <div class="paginator-btn">{{companies.paginator.num_pages}}</div></a>
                 {% endif %}
-
-                <span class="current">
-                    Page {{ companies.number }} of {{ companies.paginator.num_pages }}
-                </span>
-
-                {% if companies.has_next %}
-                    <a href="?page={{ companies.next_page_number}}">next</a>
-                    <a href="?page={{companies.paginator.num_pages}}">last &raquo;</a>
-                {% endif %}
-            </span> 
+            {% endif %}
+            </span>
         </div>
-        {% endif %}
+        <a href="http://textbook.ventures/directory-registration"><div class="registration-form col-lg-4">Register</div></a>
+
+    </div>
+    <table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">
+        <thead>
+            <tr>
+                <th data-field="logo">Logo</th>
+                <th data-field="name">
+                   {% if '-name' in lambdas %}
+                   Name <a href="{% url 'directory:index' 'name' %}" class="sort-icon">
+                        <i class="fas fa-sort-down fa-lg"></i>
+                   </a>
+                   {% elif 'name' in lambdas %}
+                   Name <a href="{% url 'directory:index' '-name' %}" class="sort-icon">
+                        <i class="fas fa-sort-up fa-lg"></i>
+                   </a>
+                   {% else %}
+                   <a href="{% url 'directory:index' 'name' %}">Name <i class="fas fa-sort fa-lg"></i></a>
+                   {% endif %}
+                </th>
+                <th data-field="description">Description</th>
+                <th data-field="industries">
+                   {% if '-industries' in lambdas %}
+                   Industries
+                   <a href="{% url 'directory:index' 'industries' %}" class="sort-icon">
+                        <i class="fas fa-sort-down fa-lg"></i>
+                   </a>
+                   {% elif 'industries' in lambdas %}
+                   Industries
+                   <a href="{% url 'directory:index' '-industries' %}" class="sort-icon">
+                        <i class="fas fa-sort-up fa-lg"></i>
+                   </a>
+                   {% else %}
+                   <a href="{% url 'directory:index' 'industries' %}">Industries <i class="fas fa-sort fa-lg"></i></a>
+                   {% endif %}
+                </th>
+                <th data-field="founded">
+                   {% if '-year_founded'  in lambdas %}
+                   Founded
+                   <a href="{% url 'directory:index' 'year_founded' %}" class="sort-icon">
+                        <i class="fas fa-sort-down fa-lg"></i>
+                   </a>
+                   {% elif 'year_founded'  in lambdas %}
+                   Founded
+                    <a href="{% url 'directory:index' '-year_founded' %}" class="sort-icon">
+                        <i class="fas fa-sort-up fa-lg"></i>
+                   </a>
+                   {% else %}
+                   <a href="{% url 'directory:index' 'year_founded' %}">Founded <i class="fas fa-sort fa-lg"></i></a>
+                   {% endif %}
+                </th>
+                <th data-field="stage">
+                   {% if '-stage' in lambdas %}
+                   Stage <a href="{% url 'directory:index' 'stage' %}" class="sort-icon">
+                        <i class="fas fa-sort-down fa-lg"></i>
+                   </a>
+                   {% elif 'stage' in lambdas %}
+                    Stage <a href="{% url 'directory:index' '-stage' %}" class="sort-icon">
+                        <i class="fas fa-sort-up fa-lg"></i>
+                   </a>
+                   {% else %}
+                   <a href="{% url 'directory:index' 'stage' %}">Stage <i class="fas fa-sort fa-lg"></i></a>
+                   {% endif %}
+                </th>
+           </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+        <tr class="{% cycle 'odd' 'even' %}">
+                <td data-field="logo">
+                    <a href="{% url 'directory:profile' company.id %}">
+                        <img class="logo" src="media/{{ company.logo }}"></a></td>
+                <td data-field="name">
+                    <a class="company-name" href="{% url 'directory:profile' company.id %}">{{ company.name }}</a> </td>
+                <td data-field="description">{{ company.description }}</td>
+                <td data-field="industries">
+                    {% if company.industries %}
+                    <a href="{% url 'directory:show_category' 'industries' company.industries %}">{{company.industries}}</a>
+                    {% endif %}
+                </td>
+
+                <td data-field="founded">
+                    {% if company.year_founded %}
+                    <a href="{% url 'directory:show_category' 'year_founded' company.year_founded %}">{{company.year_founded}}</a>
+                    {% endif %}
+                </td>
+                <td data-field="stage">
+                    {% if company.stage %}
+                    <a href="{% url 'directory:show_category' 'stage' company.stage %}">{{company.stage}}</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <p> No Companies Found </p>
+        {% endfor %}
+        </tbody>
+    </table>
+
 </div>
 {% endblock %}

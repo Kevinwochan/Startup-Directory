@@ -13,10 +13,9 @@ def home (request):
     paginator = Paginator(companies,15)
     page = request.GET.get('page')
     companies = paginator.get_page(page)
-    options = filter_options()
     form = filterForm()
 
-    return render(request,"index.html",{'companies':companies,'options':options,'filter_form':filterForm})
+    return render(request,"index.html",{'companies':companies,'filter_form':filterForm})
 
 
 # display list of companies sorted by date added
@@ -37,57 +36,39 @@ def index (request, sorting_string, page):
     paginator = Paginator(companies,15)
     page = request.GET.get('page')
     companies = paginator.get_page(page)
-    options = filter_options()
 
-    return render(request,"index.html",{'companies':companies,'lambdas':lambdas,'options':options})
+    return render(request,"index.html",{'companies':companies,'lambdas':lambdas,'filter_form':filterForm})
 
 
 #   fetches a company based on id
 def profile (request, company_id):
-    company_obj = get_object_or_404(Company,pk=company_id)
-    company = model_to_dict(company_obj)
-    company['founders'] = company['founders'].split(', ').strip(', ')
+    company = get_object_or_404(Company,pk=company_id)
 
     return render (request,'profile.html',{'company':company})
 
 # display category requests
 def show_category (request, field, category):
    companies_obj = Company.objects.filter(**{field:category})
-   options = filter_options()
 
-   return render (request,'index.html',{'companies':companies_obj,'options':options})
+   return render (request,'index.html',{'companies':companies_obj,'filter_form':filterForm})
 
 # display companies matching filters
 def filter (request):
     industry_filter = request.GET.get('industry')
     stage_filter = request.GET.get('stage')
-    year_founded_filter = request.GET.get('year_founded')
+    year_filter = request.GET.get('year')
 
-    companies_obj = Company.objects
+    companies_obj = Company.objects.all()
     if industry_filter:
         companies_obj = companies_obj.filter(industries=industry_filter)
     if stage_filter:
-        companies_obj = companies_obj.filter(industries=stage_filter)
-    if year_founded_filter:
-        companies_obj = companies_obj.filter(industries=year_founded_filter)
+        companies_obj = companies_obj.filter(stage=stage_filter)
+    if year_filter:
+        companies_obj = companies_obj.filter(year_founded=year_filter)
+
+    return render (request,'index.html',{'companies':companies_obj,'filter_form':filterForm})
 
 
-
-    options = filter_options()
-
-    return render (request,'index.html',{'companies':companies_obj,'options':options})
-
-
-
-# intialise a dict of field options
-def filter_options ():
-    options = {}
-    for field in ['stage','year_founded','industries']:
-        if Company._meta.get_field(field).choices:
-            options[field] = []
-            for choice in Company._meta.get_field(field).choices:
-                options[field].append(choice[0])
-    return options
 
 def search (searched_string):
     return

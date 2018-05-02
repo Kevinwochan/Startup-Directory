@@ -48,9 +48,10 @@ def profile (request, company_id):
 
 # display category requests
 def show_category (request, field, category):
-   companies_obj = Company.objects.filter(**{field:category})
+    category=category.replace("%20",' ')
+    companies_obj = Company.objects.filter(**{field:category})
 
-   return render (request,'index.html',{'companies':companies_obj,'filter_form':filterForm})
+    return render (request,'index.html',{'companies':companies_obj,'filter_form':filterForm})
 
 # display companies matching filters
 def filter (request):

@@ -6,14 +6,16 @@
     <h1 class="page-title">Student Startup Directory</h1>
 
     <div class="prologue">
-        <div class="filter-form form-group" >
+        <div class="filter-form form-group inline-form" >
             <form action="/filter" method="GET">
-                <label for="industry">Industry</label>
-                    {{ filter_form.industry }}
-                <label for="stage">Stage</label>
-                    {{ filter_form.stage }}
-                <label for="year_founded">Year</label>
-                    {{ filter_form.year }}
+                <div class="form-row">
+                   <div class="col-sm-2">
+                       <label class="sr-only">Industry</label>{{ filter_form.industry }}</div>
+                   <div class="col-sm-2">
+                       <label class="sr-only">Stage</label>{{ filter_form.stage }}</div>
+                   <div class="col-sm-2">
+                       <label class="sr-only">Year</label>{{ filter_form.year }}</div>
+                </div>
                 <input type="submit" class="form-group btn btn-primary" value="Submit">
                 <input type="reset" class="form-group btn btn-default" value="Clear Filters">
 
@@ -26,17 +28,18 @@
             {% if companies.has_other_pages %}
             <span class="step-links">
                 {% if companies.has_previous %}
+                <a href="?page={{companies.previous_page_number}}">
+                    <div class="paginator-btn">Prev</div></a>
                 <a href="?page=1">
                     <div class="paginator-btn">1</div>
                 </a>
-                <a href="?page={{companies.previous_page_number}}">
-                    <div class="paginator-btn">Prev</div>
-                </a>
-                <span class="current">... {% endif %}<div class="paginator-btn-active">{{ companies.number }}</div>{% if companies.has_next %} ...</span>
-                <a href="?page={{ companies.next_page_number}}">
-                    <div class="paginator-btn">Next</div></a>
+                <!-- iterate over to prev 2 pages --!>
+               <span class="current">{% endif %}<div class="paginator-btn-active">{{ companies.number }}</div>{% if companies.has_next %}<span>
+                <!-- iterate over to next 2 pages --!>
                 <a href="?page={{companies.paginator.num_pages}}">
                     <div class="paginator-btn">{{companies.paginator.num_pages}}</div></a>
+                <a href="?page={{ companies.next_page_number}}">
+                    <div class="paginator-btn">Next</div></a>
                 {% endif %}
             {% endif %}
             </span>
@@ -137,7 +140,7 @@
                 </td>
             </tr>
         {% empty %}
-            <p> No Companies Found </p>
+        <tr><td></td><td>No Companies Found</td></tr>
         {% endfor %}
         </tbody>
     </table>

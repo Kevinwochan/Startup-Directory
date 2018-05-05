@@ -3,18 +3,18 @@ from directory.choices import *
 
 class filterForm(forms.Form):
     industry = forms.ChoiceField(choices=INDUSTRY_CHOICES,
-        label="industry",
-        widget=forms.Select(attrs={'class': "form-control"}),
+        label="Industry",
+        widget=forms.Select(attrs={'class': "form-control",'placeholder':'Industry'}),
         required=False)
 
     stage = forms.ChoiceField(choices=FUNDING_CHOICES,
-        label="stage",
-        widget=forms.Select(attrs={'class': "form-control"}),
+        label="Stage",
+        widget=forms.Select(attrs={'class': "form-control",'placeholder':'Stage'}),
         required=False)
 
     year = forms.ChoiceField(choices=YEAR_CHOICES,
-        label="year",
-        widget=forms.Select(attrs={'class': "form-control"}),
+        label="Year",
+        widget=forms.Select(attrs={'class': "form-control",'placeholder':'Year'}),
         required=False)
 
 

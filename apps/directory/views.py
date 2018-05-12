@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 from django.forms.models import model_to_dict
 import re
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 def home (request):
     companies = Company.objects.all().order_by('submission_date')
@@ -55,6 +56,7 @@ def show_category (request, field, category):
 
 # display companies matching filters
 def filter (request):
+
     industry_filter = request.GET.get('industry')
     stage_filter = request.GET.get('stage')
     year_filter = request.GET.get('year')
@@ -67,10 +69,18 @@ def filter (request):
     if year_filter:
         companies_obj = companies_obj.filter(year_founded=year_filter)
 
+    query = request.GET.get("q")
+    if query:
+        companies_obj = companies_obj.filter(
+        Q(name__icontains=query) |
+        Q(description__icontains=query) |
+        Q(industries__icontains=query) |
+        Q(stage__icontains=query)
+        ).distinct()
+
     return render (request,'index.html',{'companies':companies_obj,'filter_form':filterForm})
 
 
 
 def search (searched_string):
     return
-

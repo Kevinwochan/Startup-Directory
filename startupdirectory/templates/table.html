@@ -1,57 +1,5 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<title>Student Startup Directory</title>
-<div class="row">
-    <h1 class="page-title">Student Startup Directory</h1>
-
-    <div class="prologue">
-        <div class="text-center filter-form form-group inline-form text">
-            <form action="/filter" method="GET">
-                <div class="form-row">
-                   <div class="col-sm-3">
-                       <label class="sr-only">Industry</label>{{ filter_form.industry }}</div>
-                   <div class="col-sm-3">
-                       <label class="sr-only">Stage</label>{{ filter_form.stage }}</div>
-                   <div class="col-sm-3">
-                       <label class="sr-only">Year</label>{{ filter_form.year }}</div>
-                </div>
-                <input type="submit" class="form-group btn btn-primary" value="Submit">
-                <input type="reset" class="form-group btn btn-default" value="Clear Filters">
-            </form>
-        </div>
-      </div>
-
-    <div class="pre-table">
-        <div class="paginator col-lg-4">
-            {% if companies.has_other_pages %}
-            <span class="step-links">
-                {% if companies.has_previous %}
-                <a href="?page={{companies.previous_page_number}}">
-                    <div class="paginator-btn">Prev</div></a>
-                <a href="?page=1">
-                    <div class="paginator-btn">1</div>
-                </a>
-                <!-- iterate over to prev 2 pages --!>
-               <span class="current">{% endif %}<div class="paginator-btn-active">{{ companies.number }}</div>{% if companies.has_next %}<span>
-                <!-- iterate over to next 2 pages --!>
-                <a href="?page={{companies.paginator.num_pages}}">
-                    <div class="paginator-btn">{{companies.paginator.num_pages}}</div></a>
-                <a href="?page={{ companies.next_page_number}}">
-                    <div class="paginator-btn">Next</div></a>
-                {% endif %}
-            {% endif %}
-            </span>
-        </div>
-        <div class="register-btn col-lg-4">
-            <a href="http://textbook.ventures/directory-registration"><div class="registration-form">Register</div></a>
-        </div>
-        <div class="sort col-lg-4">
-        </div>
-    </div>
-    {% block table.html %}
-    {% endblock table.html %}
-    <table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">
+{% extends "index.html" %}
+<table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">
         <thead>
             <tr>
                 <th data-field="logo">Logo</th>
@@ -144,7 +92,5 @@
         <tr><td></td><td>No Companies Found</td></tr>
         {% endfor %}
         </tbody>
-    </table>
-
-</div>
+</table>
 {% endblock %}

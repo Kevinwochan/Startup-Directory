@@ -1,4 +1,4 @@
-o*
+/*
     Document Settings
 */
 
@@ -10,7 +10,8 @@ html, body {
 /*
     Font Settings
 */
-h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, {
+h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, {
         color: #08094c;
 }
 a:hover{
@@ -53,6 +54,13 @@ a:hover{
 }
 .menu-logo{
     padding-right:18px;
+}
+.search-btn{
+    float:right;
+    padding: 7px 10px;
+    border: 0px;
+    background: linear-gradient(135deg,#35a3db 2%,#12d9e8 100%);
+    color: #ffffff;
 }
 .menu-item {
     margin: 18px 14px 18px 14px;
@@ -182,17 +190,17 @@ html, body, body.page, .container > * {
     width100%;
 }
 .filter-form .btn{
-    margin:10px 10px 0px 0px;
 }
 body {
     padding-top: 65px;
 }
 .pre-table{
     display:block;
-    margin: 10px 0px;
+    margin: 20px 0px;
 }
-.pagination{
+.paginator{
     display:inline;
+    margin: 20px 0px;
 }
 .paginator-btn{
     color:#337ab7;
@@ -201,13 +209,27 @@ body {
     padding:5px;
     display:inline;
 }
+.register-btn{
+    text-align:center;
+    margin:20px 0px;
+
+}
 .paginator-btn-active, .registration-form, .registration-form a{
     color:white;
-    border:1px black;
+    border:1px solid #337ab7;
     border-radius:3px;
-    padding:5px 6px;
+    padding:10px 20px;
     background: #337ab7;
     display:inline;
+}
+.registration-form:hover, .registration-form a:hover{
+    transition: color, background-color 0.5s ease-out;
+    background:white;
+    border-color:#337ab7;
+    color: #337ab7;
+}
+.paginator-btn-active{
+    padding: 5px 8px;
 }
 even {
     background: grey;

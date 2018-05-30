@@ -83,19 +83,10 @@
                 </div>
                 <ul class="menu">
                    <li class="menu-item">
-                       <a class="active" href="http://textbook.ventures/#about">
-                           <span class="menu-item-text">
-                               <span class="menu-text">Our Mission</span></span></a>
-                   </li>
-                   <li class="menu-item">
-                       <a class="active" href="http://textbook.ventures/#initiatives">
-                           <span class="menu-item-text">
-                               <span class="menu-text">Our Initiatives</span></span></a>
-                   </li>
-                   <li class="menu-item">
-                       <a class="active" href="http://textbook.ventures/#sponsors">
-                           <span class="menu-item-text">
-                               <span class="menu-text">Sponsors</span></span></a>
+                       <form action="/filter" method="GET">
+                          <input type="text" name="q" placeholder="Search Here" value="{{ request.GET.q }}" />
+                          <button class ="search-btn"type="submit" value="Search"><i class="fa fa-search"></i></button>
+                      </form>
                    </li>
                    <li class="menu-item">
                        <a class="active" href="http://textbook.ventures/#testimonials">

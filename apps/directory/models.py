@@ -23,7 +23,7 @@ class Company (models.Model):
 # contact email for the company
     email = models.EmailField(default='')
 # logo in the form of png or jpeg
-    logo = models.ImageField(upload_to='logos',default="logos/undefined.png")
+    logo = models.ImageField(upload_to='logos',default="logos/undefined.svg")
 # amount of funding recieved
     funding = models.PositiveSmallIntegerField(default=0)
 # the units of funding

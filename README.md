@@ -37,7 +37,7 @@ ______  _                    _
 Directory
     displays a list of companies in a tabular format
     displays a company's profile page with additional information
-    
+
 Registration
 
 ####################
@@ -51,6 +51,10 @@ Run by passing the program into Django's Shell
 
     pipenv run python manage.py shell < csvTosql.py 
 
+Downlad latest startups from google sheets
+
+    pipenv run python manage.py shell < downloadStartups.py 
+
 ##################
 ## Dependencies ##
 ##################
@@ -60,6 +64,8 @@ Run by passing the program into Django's Shell
 - [Django debug toolbar](http://django-debug-toolbar.readthedocs.org/) enabled for superusers.
 - [Argon2](https://docs.djangoproject.com/en/2.0/topics/auth/passwords/#using-argon2-with-django) to hash the passwords
 - [Pillow] (https://github.com/python-pillow) to handle images
+- [Sheets API]
+- [Oauth2] 
 
 ######################
 ## Local Host Setup ##
@@ -68,31 +74,22 @@ Run by passing the program into Django's Shell
 1. Install Python3
 2. Install Pip3 (Python3 package manager)
 3. Install Pipenv 
-4. Install Pip Dependencies
+4. Run install script (install.sh)
+5. Run update script (update.sh)
+
 
 Make sure you have [pipenv installed](https://docs.pipenv.org/install.html). Then install Django 2.0 in your virtualenv:
 
     pip install django==2.0
 
-To create a new Django project (make sure to change `project_name`)
-
-    django-admin.py startproject --template=https://github.com/fasouto/django-starter-template/archive/master.zip --extension=py,md,html,txt project_name
-
-cd to your project and install the development dependences
-
-    pipenv install --dev
-
-If you need a database, edit the settings and create one with
    
-    pipenv run python manage.py migrate
-
-    
 ##############################
 ## How to run on local host ##
 ##############################
 
+Once everything it's setup, make sure to update your files with the latest dataset and code using update.sh.
 
-Once everything it's setup you can run the development server: [http://localhost:8000/](http://localhost:8000/)
+Run the development server: [http://localhost:8000/](http://localhost:8000/)
 
     pipenv run python manage.py runserver
 

@@ -12,7 +12,7 @@ html, body {
 */
 h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, {
-        color: #08094c;
+    color: #08094c;
 }
 a:hover{
     text-decoration:none !important;
@@ -249,13 +249,16 @@ thead>tr>th>a, thead>tr>th>a:hover, thead>tr>th{
 .fa-sort-down{
     color:#337ab7;
 }
-th{
+th,td {
     min-width:120px;
+    vertical-align:middle!important;
+}
+td:first-child{ 
+    text-align:center;
 }
 table .logo {
     max-height:50px;
-    height:auto;
-    width: auto;
+    max-width:200px;
 }
 .company-name{
     color:#07084a;

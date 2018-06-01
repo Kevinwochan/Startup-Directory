@@ -1,12 +1,9 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 django = "==2.0"
 "argon2-cffi" = "*"
 django-compressor = "*"
@@ -14,10 +11,11 @@ django-compressor = "*"
 bcrypt = "*"
 pillow = "*"
 django-debug-toolbar = "*"
-
+google-api-python-client = "*"
+pip = "*"
+"oauth2client" = "*"
 
 [dev-packages]
-
 django-debug-toolbar = "*"
 sphinx = "*"
 coverage = "*"

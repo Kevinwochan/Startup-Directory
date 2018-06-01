@@ -119,7 +119,7 @@
         <tr class="{% cycle 'odd' 'even' %}">
                 <td data-field="logo">
                     <a href="{% url 'directory:profile' company.id %}">
-                        <img class="logo" src="media/{{ company.logo }}"></a></td>
+                        <img class="logo" src="{{ company.logo }}"></a></td>
                 <td data-field="name">
                     <a class="company-name" href="{% url 'directory:profile' company.id %}">{{ company.name }}</a> </td>
                 <td data-field="description">{{ company.description }}</td>

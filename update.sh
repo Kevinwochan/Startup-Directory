@@ -1,7 +1,6 @@
 #!/bin/sh
-#!/bin/sh
 
-$(cd ~/Startupdirectory;
+$(cd ~/startupdirectory;
  git reset --hard;
  git pull;
  pipenv install --dev;

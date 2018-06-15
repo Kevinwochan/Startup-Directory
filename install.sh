@@ -4,6 +4,7 @@
 
 # Download default images
 download(){
+	echo "Downloading defualt images"
 	# Download default logo image
 	$(mkdir ./public/media)
 	$(mkdir ./public/media/logos/)
@@ -16,13 +17,16 @@ download(){
 	$(curl https://textbook.ventures/wp-content/uploads/2018/03/cropped-TBV-Logo-Icon-Only-Dark-BG@2x-1-32x32.png> ./public/static/img/textbook-ventures-icon.png)
 }
 
+# Writing Apache Conf
+apache(){
+
 # Install python3 and or apache2 dependencies
 installDependencies(){
 	$(sudo apt-get update;)
 	if [ "$1" = "dev" ]
 	then
 		echo "Installing python3 and pipenv"
-		$(sudo apt-get install python3-pip pipenv;)
+		$(sudo apt-get install python3-pip pipenv django;)
 	fi
 	
 	if [ "$1" = "server" ]
@@ -30,13 +34,18 @@ installDependencies(){
 		echo "Installing Apache2 and Mod-wsgi-py3"
 		$(sudo apt-get install libapache2-mod-wsgi-py3;)
 	fi
+	apache
 }
 
 # Update files to the latest repo
 update(){
+	echo "updating repo"
 	$(chmod +x *.sh; ./update.sh)
 	# Sanity checking firewall permisions
 	$(sudo ufw allow 'Apache Full')
+}
+	echo "Copying apache configurations"
+	$(mv ./Apache\ Confs/000-default.conf /etc/apache2/sites-available/000-default.conf)
 }
 
 ### install.sh - A script to set up django on a new server or a dev environment
@@ -53,6 +62,5 @@ fi
 download
 installDependencies
 update
-
 # Restart Apache
 $(sudo systemctl restart apache2)

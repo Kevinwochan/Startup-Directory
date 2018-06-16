@@ -19,6 +19,9 @@ download(){
 
 # Writing Apache Conf
 apache(){
+	echo "Copying apache configurations"
+	$(mv ./Apache\ Confs/000-default.conf /etc/apache2/sites-available/000-default.conf)
+}
 
 # Install python3 and or apache2 dependencies
 installDependencies(){
@@ -44,9 +47,7 @@ update(){
 	# Sanity checking firewall permisions
 	$(sudo ufw allow 'Apache Full')
 }
-	echo "Copying apache configurations"
-	$(mv ./Apache\ Confs/000-default.conf /etc/apache2/sites-available/000-default.conf)
-}
+
 
 ### install.sh - A script to set up django on a new server or a dev environment
 if [ "$1" = "dev" ]

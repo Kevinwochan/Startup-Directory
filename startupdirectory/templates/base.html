@@ -1,124 +1,55 @@
 {% load static %}
+<!doctype html>
 <html lang="en">
-  <head>
-      <meta property="og:title" content="Textbook Ventures' Directory"/>
-      <meta property="og:type" content="website"/>
-      <meta property="og:url" content="http://textbook.ventures/"/>
-      <meta property="og:site_name" content="Textbook Ventures'"/>
-      <meta property="og:description" content="Connecting Student Founders"/>
-      <meta property="og:image" content="{% static 'img/textbook-ventures-icon.png' %}"/>
+<head>
+	<meta property="og:title" content="Textbook Ventures' Directory"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="http://textbook.ventures/"/>
+	<meta property="og:site_name" content="Textbook Ventures'"/>
+	<meta property="og:description" content="Connecting Student Founders"/>
+	<meta property="og:image" content="{% static 'img/textbook-ventures-icon.png' %}"/>
+	<link  rel="icon" content="{% static 'img/textbook-ventures-icon.png' %}"/>
 
-      <link  rel="icon" content="{% static 'img/textbook-ventures-icon.png' %}"/>
-    {% load compress %}
-    {% compress css %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">  
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% endcompress %}
-   {% compress js %}
-    <script src="{% static 'js/app.js' %}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  {% endcompress %}
+	<!-- BOOSTRAP -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">  
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	{% load compress %}
+		{% compress css %}
+			<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+			<link rel="stylesheet" href="{% static 'css/base.css' %}">
+		{% endcompress %}
+		{% compress js %}
+			<script src="{% static 'js/app.js' %}"></script>
+	{% endcompress %}
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand bg-light" href="http://textbook.ventures">
+				<img id="nav-img"class ="img-responsive" src="{% static 'img/textbook-ventures.png' %}">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                {% include 'menu.html' %}
+				<form class="form-inline my-2 my-lg-0" action="/filter" method="GET">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search">
+					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+				</form>
+			</div>
 
+		</div>
+	</nav> 
 </head>
 
 <body>
-
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <!-- Nav Menu -->
-        <div class="mobile-header">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="http://textbook.ventures"><img id="nav-img"class ="img-responsive" src="{% static 'img/textbook-ventures.png' %}"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse-main">
-                <ul class="nav navbar-nav">
-                    <li class="menu-item">
-                        <a class="active" href="http://textbook.ventures/#about">
-                            <span class="menu-item-text">
-                                <span class="menu-text">Our Mission</span></span></a>
-                    </li>
-                    <li class="menu-item">
-                        <a class="active" href="http://textbook.ventures/#initiatives">
-                            <span class="menu-item-text">
-                                <span class="menu-text">Our Initiatives</span></span></a>
-                    </li>
-                    <li class="menu-item">
-                        <a class="active" href="http://textbook.ventures/#sponsors">
-                            <span class="menu-item-text">
-                                <span class="menu-text">Sponsors</span></span></a>
-                    </li>
-                    <li class="menu-item">
-                        <a class="active" href="http://textbook.ventures/#testimonials">
-                            <span class="menu-item-text">
-                                <span class="menu-text">Testimonials</span></span></a>
-                    </li>
-                    <li class="menu-item">
-                        <a class="active" href="{% url 'directory:home' %}">
-                            <span class="menu-item-text">
-                                <span class="menu-text">Directory</span></span></a>
-                    </li>
-                    <li class="menu-item">
-                        <a class="active" href="http://textbook.ventures/#contact">
-                            <span class="menu-item-text">
-                                <span class="menu-text">Contact</span></span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="masthead">
-            <div class="nav-bar-wrapper">
-                <div class="logo">
-                    <a href="http://textbook.ventures">
-                        <img class ="img-responsive" src="{% static 'img/textbook-ventures.png' %}">
-                    </a>
-                </div>
-                <ul class="menu">
-                   <li class="menu-item">
-                       <form action="/filter" method="GET">
-                          <input type="text" name="q" placeholder="Search Here" value="{{ request.GET.q }}" />
-                          <button class ="search-btn"type="submit" value="Search"><i class="fa fa-search"></i></button>
-                      </form>
-                   </li>
-                   <li class="menu-item">
-                       <a class="active" href="http://textbook.ventures/#testimonials">
-                           <span class="menu-item-text">
-                               <span class="menu-text">Testimonials</span></span></a>
-                   </li>
-                   <li class="menu-item">
-                       <a class="active" href="{% url 'directory:home' %}">
-                           <span class="menu-item-text">
-                               <span class="menu-text">Directory</span></span></a>
-                   </li>
-                   <li class="menu-item">
-                       <a class="active" href="http://textbook.ventures/#contact">
-                           <span class="menu-item-text">
-                               <span class="menu-text">Contact</span></span></a>
-                   </li>
-               </ul>
-            <div>
-        </div>
-    </nav>
-
-  <div class="container">
-
-    {% block body %}{% endblock %}
-
-    {% block content %}{% endblock %}
-  </div>
-
+		{% block content %}{% endblock content %}
+        {% block table %}{% endblock table %}
 </body>
 
-
-    <footer id="footer" class="container-fluid text-center">
+<footer id="footer" class="container-fluid text-center">
 
         <div class="social-footer">
             <div class="social-link">
@@ -157,29 +88,27 @@
             </div>
             <div class="col-sm-6">
                 <ul class="list-inline">
-                    <li>
+                    <li class="list-inline-item">
                         <a class="bottom-nav-link" href="http://textbook.ventures/#about">Our Mission</a>
-                    </li>
-                    <li>
+                    </li class="list-inline-item">
+                    <li class="list-inline-item">
                         <a class="bottom-nav-link" href="http://textbook.ventures/#initiatives">Our Initiatives</a>
-                    </li>
-                    <li>
+                    </li class="list-inline-item">
+                    <li class="list-inline-item">
                         <a class="bottom-nav-link" href="http://textbook.ventures/#sponsors">Sponsors</a>
-                    </li>
-                    <li>
+                    </li class="list-inline-item">
+                    <li class="list-inline-item">
                         <a class="bottom-nav-link" href="http://textbook.ventures/#testimonials">Testimonials</a>
-                    </li>
-                    <li>
+                    </li class="list-inline-item">
+                    <li class="list-inline-item">
                         <a class="bottom-nav-link" href="{% url 'directory:home' %}">Directory</a>
-                    </li>
-                    <li>
+                    </li class="list-inline-item">
+                    <li class="list-inline-item">
                         <a class="bottom-nav-link" href="http://textbook.ventures/#contact">Contact</a>
-                    </li>
+                    </li class="list-inline-item">
                 </ul>
             </div>
         </div>
-
-       
-    </footer>
+</footer>
 
 </html>

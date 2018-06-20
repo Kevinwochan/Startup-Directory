@@ -2,149 +2,30 @@
 
 {% block content %}
 <title>Student Startup Directory</title>
-<div class="row">
-    <h1 class="page-title">Student Startup Directory</h1>
 
-    <div class="prologue">
-        <div class="text-center filter-form form-group inline-form text">
-            <form action="/filter" method="GET">
-                <div class="form-row">
-                   <div class="col-sm-3">
-                       <label class="sr-only">Industry</label>{{ filter_form.industry }}</div>
-                   <div class="col-sm-3">
-                       <label class="sr-only">Stage</label>{{ filter_form.stage }}</div>
-                   <div class="col-sm-3">
-                       <label class="sr-only">Year</label>{{ filter_form.year }}</div>
-                </div>
-                <input type="submit" class="form-group btn btn-primary" value="Submit">
-                <input type="reset" class="form-group btn btn-default" value="Clear Filters">
-            </form>
-        </div>
-      </div>
+<div class="jumbotron">
+	<div class="container">
+		<h1 class="display-2">Student Startup Directory</h1>
+		<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+		<hr class="my-4">
+		<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+		<p class="lead">
+			<a class="btn btn-primary btn-lg" href="http://textbook.ventures/directory-registration" role="button">Register Yours</a>
+		</p>
+		<div class="filter-form">
+			<form class="form-inline" action="/filter" method="GET">
+			   {{ filter_form.industry }}
+			   {{ filter_form.stage }}
+			   {{ filter_form.year }}
+				<input type="submit" class="btn btn-outline-primary mr-sm-2" value="Submit">
+				<input type="reset" class="btn btn-outline-secondary mr-sm-2" value="Clear Filters">
+			</form>
+		</div>
+	</div>
+</div>
 
-    <div class="pre-table">
-        <div class="paginator col-lg-4">
-            {% if companies.has_other_pages %}
-            <span class="step-links">
-                {% if companies.has_previous %}
-                <a href="?page={{companies.previous_page_number}}">
-                    <div class="paginator-btn">Prev</div></a>
-                <a href="?page=1">
-                    <div class="paginator-btn">1</div>
-                </a>
-                <!-- iterate over to prev 2 pages --!>
-               <span class="current">{% endif %}<div class="paginator-btn-active">{{ companies.number }}</div>{% if companies.has_next %}<span>
-                <!-- iterate over to next 2 pages --!>
-                <a href="?page={{companies.paginator.num_pages}}">
-                    <div class="paginator-btn">{{companies.paginator.num_pages}}</div></a>
-                <a href="?page={{ companies.next_page_number}}">
-                    <div class="paginator-btn">Next</div></a>
-                {% endif %}
-            {% endif %}
-            </span>
-        </div>
-        <div class="register-btn col-lg-4">
-            <a href="http://textbook.ventures/directory-registration"><div class="registration-form">Register</div></a>
-        </div>
-        <div class="sort col-lg-4">
-        </div>
-    </div>
-    {% block table.html %}
-    {% endblock table.html %}
-    <table class="table table-striped" data-toggle="table" data-url="data" data-cache="false">
-        <thead>
-            <tr>
-                <th data-field="logo">Logo</th>
-                <th data-field="name">
-                   {% if '-name' in lambdas %}
-                   Name <a href="{% url 'directory:index' 'name' %}" class="sort-icon">
-                        <i class="fas fa-sort-down fa-lg"></i>
-                   </a>
-                   {% elif 'name' in lambdas %}
-                   Name <a href="{% url 'directory:index' '-name' %}" class="sort-icon">
-                        <i class="fas fa-sort-up fa-lg"></i>
-                   </a>
-                   {% else %}
-                   <a href="{% url 'directory:index' 'name' %}">Name <i class="fas fa-sort fa-lg"></i></a>
-                   {% endif %}
-                </th>
-                <th data-field="description">Description</th>
-                <th data-field="industries">
-                   {% if '-industries' in lambdas %}
-                   Industries
-                   <a href="{% url 'directory:index' 'industries' %}" class="sort-icon">
-                        <i class="fas fa-sort-down fa-lg"></i>
-                   </a>
-                   {% elif 'industries' in lambdas %}
-                   Industries
-                   <a href="{% url 'directory:index' '-industries' %}" class="sort-icon">
-                        <i class="fas fa-sort-up fa-lg"></i>
-                   </a>
-                   {% else %}
-                   <a href="{% url 'directory:index' 'industries' %}">Industries <i class="fas fa-sort fa-lg"></i></a>
-                   {% endif %}
-                </th>
-                <th data-field="founded">
-                   {% if '-year_founded'  in lambdas %}
-                   Founded
-                   <a href="{% url 'directory:index' 'year_founded' %}" class="sort-icon">
-                        <i class="fas fa-sort-down fa-lg"></i>
-                   </a>
-                   {% elif 'year_founded'  in lambdas %}
-                   Founded
-                    <a href="{% url 'directory:index' '-year_founded' %}" class="sort-icon">
-                        <i class="fas fa-sort-up fa-lg"></i>
-                   </a>
-                   {% else %}
-                   <a href="{% url 'directory:index' 'year_founded' %}">Founded <i class="fas fa-sort fa-lg"></i></a>
-                   {% endif %}
-                </th>
-                <th data-field="stage">
-                   {% if '-stage' in lambdas %}
-                   Stage <a href="{% url 'directory:index' 'stage' %}" class="sort-icon">
-                        <i class="fas fa-sort-down fa-lg"></i>
-                   </a>
-                   {% elif 'stage' in lambdas %}
-                    Stage <a href="{% url 'directory:index' '-stage' %}" class="sort-icon">
-                        <i class="fas fa-sort-up fa-lg"></i>
-                   </a>
-                   {% else %}
-                   <a href="{% url 'directory:index' 'stage' %}">Stage <i class="fas fa-sort fa-lg"></i></a>
-                   {% endif %}
-                </th>
-           </tr>
-        </thead>
-        <tbody>
-        {% for company in companies %}
-        <tr class="{% cycle 'odd' 'even' %}">
-                <td data-field="logo">
-                    <a href="{% url 'directory:profile' company.id %}">
-                        <img class="logo" src="{{ company.logo }}"></a></td>
-                <td data-field="name">
-                    <a class="company-name" href="{% url 'directory:profile' company.id %}">{{ company.name }}</a> </td>
-                <td data-field="description">{{ company.description }}</td>
-                <td data-field="industries">
-                    {% if company.industries %}
-                    <a href="{% url 'directory:show_category' 'industries' company.industries %}">{{company.industries}}</a>
-                    {% endif %}
-                </td>
-
-                <td data-field="founded">
-                    {% if company.year_founded %}
-                    <a href="{% url 'directory:show_category' 'year_founded' company.year_founded %}">{{company.year_founded}}</a>
-                    {% endif %}
-                </td>
-                <td data-field="stage">
-                    {% if company.stage %}
-                    <a href="{% url 'directory:show_category' 'stage' company.stage %}">{{company.stage}}</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% empty %}
-        <tr><td></td><td>No Companies Found</td></tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="container">
+	{% include 'table.html' %}
+	{% include 'paginator.html' %}
 </div>
 {% endblock %}

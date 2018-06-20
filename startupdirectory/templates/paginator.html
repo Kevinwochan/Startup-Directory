@@ -1,0 +1,23 @@
+{% block paginator %}
+<div class="paginator col-lg-4">
+    {% if companies.has_other_pages %}
+    <span class="step-links">
+        {% if companies.has_previous %}
+        <a href="?page={{companies.previous_page_number}}">
+            <div class="paginator-btn">Prev</div></a>
+        <a href="?page=1">
+            <div class="paginator-btn">1</div>
+        </a>
+        <!-- iterate over to prev 2 pages --!>
+         <span class="current">{% endif %}<div class="paginator-btn-active">{{ companies.number }}</div>{% if companies.has_next %}<span>
+        <!-- iterate over to next 2 pages --!>
+        <a href="?page={{companies.paginator.num_pages}}">
+            <div class="paginator-btn">{{companies.paginator.num_pages}}</div></a>
+        <a href="?page={{ companies.next_page_number}}">
+            <div class="paginator-btn">Next</div></a>
+        {% endif %}
+    {% endif %}
+    </span>
+</div>
+
+{% endblock %}

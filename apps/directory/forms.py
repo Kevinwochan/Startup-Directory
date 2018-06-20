@@ -1,22 +1,26 @@
 from django import forms
 from directory.choices import *
 
+# create an empty option as a placeholder
+YEAR_CHOICES.append(('','Year'))
+INDUSTRY_CHOICES.append(('','Industry'))
+FUNDING_CHOICES.append(('','Stage'))
+
 class filterForm(forms.Form):
     industry = forms.ChoiceField(choices=INDUSTRY_CHOICES,
         label="Industry",
-        widget=forms.Select(attrs={'class': "form-control",'placeholder':'Industry'}),
+        widget=forms.Select(attrs={'class': "form-control mr-sm-2",'placeholder':'Industry'}),
         required=False)
 
     stage = forms.ChoiceField(choices=FUNDING_CHOICES,
         label="Stage",
-        widget=forms.Select(attrs={'class': "form-control",'placeholder':'Stage'}),
+        widget=forms.Select(attrs={'class': "form-control mr-sm-2",'placeholder':'Stage'}),
         required=False)
 
     year = forms.ChoiceField(choices=YEAR_CHOICES,
         label="Year",
-        widget=forms.Select(attrs={'class': "form-control",'placeholder':'Year'}),
+        widget=forms.Select(attrs={'class': "form-control mr-sm-2",'placeholder':'Year'}),
         required=False)
-
 
 '''
 <form action="/filter" method="GET">

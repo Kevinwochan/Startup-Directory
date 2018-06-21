@@ -1,0 +1,11 @@
+{% block filter %}
+<div id="filter-form">
+	<form class="form-inline" action="/filter" method="GET">
+	   {{ filter_form.industry }}
+	   {{ filter_form.stage }}
+	   {{ filter_form.year }}
+		<input type="submit" class="btn btn-outline-primary mr-sm-2" value="Submit">
+		<input type="reset" class="btn btn-outline-secondary mr-sm-2" value="Clear Filters">
+	</form>
+</div>
+{% endblock %}

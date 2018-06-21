@@ -10,10 +10,14 @@
 	<meta property="og:image" content="{% static 'img/textbook-ventures-icon.png' %}"/>
 	<link  rel="icon" content="{% static 'img/textbook-ventures-icon.png' %}"/>
 
-	<!-- BOOSTRAP -->
+	<!-- Icons-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">  
+	<!-- Boostrap CSS-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<!-- Bootstrap JS + Popper JS-->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
 	{% load compress %}
 		{% compress css %}
 			<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
@@ -22,18 +26,18 @@
 		{% compress js %}
 			<script src="{% static 'js/app.js' %}"></script>
 	{% endcompress %}
-	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
 		<div class="container">
 			<a class="navbar-brand bg-light" href="http://textbook.ventures">
 				<img id="nav-img"class ="img-responsive" src="{% static 'img/textbook-ventures.png' %}">
-		</a>
+            </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 {% include 'menu.html' %}
 				<form class="form-inline my-2 my-lg-0" action="/filter" method="GET">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search">
+					<input name='q' class="form-control mr-sm-2" type="search" placeholder="Search">
 					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
 						<i class="fa fa-search"></i>
 					</button>

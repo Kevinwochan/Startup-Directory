@@ -10,9 +10,23 @@ html, body {
 /*
     Font Settings
 */
-h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, {
+p {
+    font: normal 15px / 27px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: 15px;
+    line-height: 27px;
+    font-family: Roboto, Helvetica, Arial, Verdana, sans-serif;
+    word-spacing: normal;
+}
+h1, h2, h3, h4, h5, h6{
     color: #08094c;
+    font-family: "Roboto Condensed";
 }
 a:hover{
     text-decoration:none !important;
@@ -31,34 +45,67 @@ a:hover{
 	padding: 0;
 }
 .navbar-brand{
+	padding 0;
 	margin-left:-2000px;
 	padding-left:2000px;
+}
+#nav-img{
+	height:60px;
+}
+.nav-item{
+    font-size:20px;
+}
+#menu .nav-link{
+	position:relative;
+    padding-right: 0;
+    padding-left: 0; 
+	margin: .5rem;
+}
+.nav-link::before{
+	position:absolute;
+	left: 0px;
+	bottom: 4px;
+    height: 2px;
+    width: 100%;
+	opacity:0;
+	display: block;
+    background: rgba(0,0,0,.1);
+    content: '';
+    -ms-transition: all .3s;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    -ms-transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+}
+.nav-item:hover .nav-link::before{ 
+    transform: translateY(0px);
+	opacity: 1;
+    left: 0;
+	background-color: #35a3db;
+    background: #35a3db;
+    background: -webkit-linear-gradient(135deg,#35a3db 30%,#12d9e8 100%);
+    background: linear-gradient(135deg,#35a3db 30%,#12d9e8 100%);
 }
 /*
     Document Body
 */
-html, body, body.page, .container > p {
-    font: normal 15px / 27px "Roboto", Helvetica, Arial, Verdana, sans-serif;
-    font-style: normal;
-    font-variant-ligatures: normal;
-    font-variant-caps: normal;
-    font-variant-numeric: normal;
-    font-variant-east-asian: normal;
-    font-weight: normal;
-    font-stretch: normal;
-    font-size: 15px;
-    line-height: 27px;
-    font-family: Roboto, Helvetica, Arial, Verdana, sans-serif;
-    word-spacing: normal;
-    color: #37374c;
+
+/*
+	Hero Banner
+*/
+
+#homepage-hero h1{
+	font-weight:700;
 }
-.jumbotron{
-}
-body {
-}
-.pre-table{
-    display:block;
-    margin: 20px 0px;
+
+/*
+   	Table 
+*/
+#filter-form{
+	max-width:700px;
+	margin:auto;
+	padding-bottom:40px;
 }
 .paginator{
     display:inline;
@@ -84,13 +131,7 @@ body {
     background: #337ab7;
     display:inline;
 }
-.registration-form:hover, .registration-form a:hover{
-    transition: color, background-color 0.5s ease-out;
-    background:white;
-    border-color:#337ab7;
-    color: #337ab7;
-}
-.paginator-btn-active{
+paginator-btn-active{
     padding: 5px 8px;
 }
 even {
@@ -167,7 +208,6 @@ proftext {
     padding-bottom: 10px;
     font-size: 18px;
 }
-
 /*
     Footer
 */

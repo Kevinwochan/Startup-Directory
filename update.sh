@@ -3,8 +3,6 @@
 cd ~/startupdirectory;
 git reset --hard;
 git pull;
-pipenv install --dev;
-rm -f *.sqlite3;
 pipenv run python manage.py migrate --run-syncdb;
 pipenv run python manage.py makemigrations;
 pipenv run python manage.py migrate;

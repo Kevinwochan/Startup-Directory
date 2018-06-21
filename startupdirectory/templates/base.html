@@ -8,7 +8,7 @@
 	<meta property="og:site_name" content="Textbook Ventures'"/>
 	<meta property="og:description" content="Connecting Student Founders"/>
 	<meta property="og:image" content="{% static 'img/textbook-ventures-icon.png' %}"/>
-	<link  rel="icon" content="{% static 'img/textbook-ventures-icon.png' %}"/>
+	<link  rel="shortcut icon" content="{% static 'img/textbook-ventures-icon.png' %}"/>
 
 	<!-- Icons-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">  
@@ -54,65 +54,62 @@
 </body>
 
 <footer id="footer" class="container-fluid text-center">
-
-        <div class="social-footer">
-            <div class="social-link">
-                <a href="http://medium.com/textbook-ventures">
-                    <div class="social-icon"><i class="fab fa-medium-m"></i></div>
-                    <p class="social-platform">OUR BLOG</p>
-                    <p class="social-user">@textbook-ventures</p>
-                </a>
-            </div>
-            <div class="social-link">
-                <a href="https://twitter.com/tb_ventures">
-                <div class="social-icon"><i class="fab fa-twitter"></i></div>
-                <p class="social-platform">TWITTER</p>
-                <p class="social-user">@tb_ventures</p>
-                </a>
-            </div>
-            <div class="social-link">
-                <a href="https://www.facebook.com/textbookventures/">
-                <div class="social-icon"><i class="fab fa-facebook"></i></div>
-                <p class="social-platform">FACEBOOK</p>
-                <p class="social-user">@textbookventures</p>
-                </a>
-            </div>
-          <div class="social-link">
-                <a href="https://www.linkedin.com/company/12903671/">
-                <div class="social-icon"><i class="fab fa-linkedin"></i></div>
-                <p class="social-platform">LINKEDIN</p>
-                <p class="social-user">@Textbook_Ventures</p>
-                </a>
-           </div>
-       </div>
-        
-        <div id="bottom-nav" class="row">
-            <div class="col-sm-6">
-                <p>© 2018 Textbook Ventures Inc. Trademarks and brands are the property of their respective owners.</p>
-            </div>
-            <div class="col-sm-6">
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a class="bottom-nav-link" href="http://textbook.ventures/#about">Our Mission</a>
-                    </li class="list-inline-item">
-                    <li class="list-inline-item">
-                        <a class="bottom-nav-link" href="http://textbook.ventures/#initiatives">Our Initiatives</a>
-                    </li class="list-inline-item">
-                    <li class="list-inline-item">
-                        <a class="bottom-nav-link" href="http://textbook.ventures/#sponsors">Sponsors</a>
-                    </li class="list-inline-item">
-                    <li class="list-inline-item">
-                        <a class="bottom-nav-link" href="http://textbook.ventures/#testimonials">Testimonials</a>
-                    </li class="list-inline-item">
-                    <li class="list-inline-item">
-                        <a class="bottom-nav-link" href="{% url 'directory:home' %}">Directory</a>
-                    </li class="list-inline-item">
-                    <li class="list-inline-item">
-                        <a class="bottom-nav-link" href="http://textbook.ventures/#contact">Contact</a>
-                    </li class="list-inline-item">
-                </ul>
-            </div>
-        </div>
+	<div class="social-footer">
+		<div class="social-link">
+			<a href="http://medium.com/textbook-ventures">
+				<div class="social-icon"><i class="fab fa-medium-m"></i></div>
+				<p class="social-platform">OUR BLOG</p>
+				<p class="social-user">@textbook-ventures</p>
+			</a>
+		</div>
+		<div class="social-link">
+			<a href="https://twitter.com/tb_ventures">
+			<div class="social-icon"><i class="fab fa-twitter"></i></div>
+			<p class="social-platform">TWITTER</p>
+			<p class="social-user">@tb_ventures</p>
+			</a>
+		</div>
+		<div class="social-link">
+			<a href="https://www.facebook.com/textbookventures/">
+			<div class="social-icon"><i class="fab fa-facebook"></i></div>
+			<p class="social-platform">FACEBOOK</p>
+			<p class="social-user">@textbookventures</p>
+			</a>
+		</div>
+		<div class="social-link">
+			<a href="https://www.linkedin.com/company/12903671/">
+			<div class="social-icon"><i class="fab fa-linkedin"></i></div>
+			<p class="social-platform">LINKEDIN</p>
+			<p class="social-user">@Textbook_Ventures</p>
+			</a>
+		</div>
+   	</div>
+	<div id="bottom-nav" class="row">
+		<div class="col-sm-6">
+			<p>© 2018 Textbook Ventures Inc. Trademarks and brands are the property of their respective owners.</p>
+		</div>
+		<div class="col-sm-6">
+			<ul class="list-inline">
+				<li class="list-inline-item">
+					<a class="bottom-nav-link" href="http://textbook.ventures/#about">Our Mission</a>
+				</li> 
+				<li class="list-inline-item">
+					<a class="bottom-nav-link" href="http://textbook.ventures/#initiatives">Our Initiatives</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="bottom-nav-link" href="http://textbook.ventures/#sponsors">Sponsors</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="bottom-nav-link" href="http://textbook.ventures/#testimonials">Testimonials</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="bottom-nav-link" href="{% url 'directory:home' %}">Directory</a>
+				<li class="list-inline-item">
+					<a class="bottom-nav-link" href="http://textbook.ventures/#contact">Contact</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </footer>
 
 </html>

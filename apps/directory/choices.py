@@ -1,7 +1,12 @@
 from django.utils import timezone
 from datetime import date, datetime
 
-# creates dyamic set of choices for founded date
+COMPANY_TYPE_LIST = ("Investor","Startup","Society","Support","School")
+COMPANY_TYPE_CHOICES= []
+for r in COMPANY_TYPE_LIST:
+        COMPANY_TYPE_CHOICES.append(("Coming Soon",r))
+
+# creates dynamic set of choices for founded date
 YEAR_CHOICES = [] 
 for r in range(2010, (datetime.now().year+1)):
         YEAR_CHOICES.append((r,r))

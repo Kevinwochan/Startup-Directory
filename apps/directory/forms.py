@@ -5,6 +5,7 @@ from directory.choices import *
 YEAR_CHOICES.append(('','Year'))
 INDUSTRY_CHOICES.append(('','Industry'))
 FUNDING_CHOICES.append(('','Stage'))
+COMPANY_TYPE_CHOICES.append(('','Company Type'))
 
 class filterForm(forms.Form):
     industry = forms.ChoiceField(choices=INDUSTRY_CHOICES,
@@ -21,6 +22,12 @@ class filterForm(forms.Form):
         label="Year",
         widget=forms.Select(attrs={'class': "form-control mr-sm-2",'placeholder':'Year'}),
         required=False)
+
+    company_type = forms.ChoiceField(choices=COMPANY_TYPE_CHOICES,
+        label="Company Type",
+        widget=forms.Select(attrs={'class': "form-control mr-sm-2",'placeholder':'Type'}),
+        required=False)
+
 
 '''
 <form action="/filter" method="GET">
@@ -42,8 +49,7 @@ class filterForm(forms.Form):
                 <label for="founded_year">Year</label>
                 <select class="form-control">
                     <option value="" selected="selected">—</option>
-                    {% for year in options.year_founded %}
-                    <option value="{{ year }}">{{ year }}</option>
+                    {% for year in options.year_founded %} <option value="{{ year }}">{{ year }}</option>
                     {% endfor %}
                 </select>
                 <input type="submit" class="btn btn-default" value="Submit">

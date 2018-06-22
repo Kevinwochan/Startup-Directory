@@ -1,6 +1,7 @@
 {% block filter %}
 <div id="filter-form">
 	<form class="form-inline" action="/filter" method="GET">
+	   {{ filter_form.company_type}}
 	   {{ filter_form.industry }}
 	   {{ filter_form.stage }}
 	   {{ filter_form.year }}

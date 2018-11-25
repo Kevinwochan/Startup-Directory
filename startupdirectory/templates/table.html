@@ -65,7 +65,7 @@
         </thead>
         <tbody>
         {% for company in companies %}
-				<tr class="{% cycle 'odd' 'even' %}">
+				<tr>
                 <td data-field="logo">
                     <a href="{% url 'directory:profile' company.id %}">
                         <img class="logo" src="{{ company.logo }}"></a></td>

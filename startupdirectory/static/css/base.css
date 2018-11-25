@@ -132,12 +132,6 @@ a:hover{
 paginator-btn-active{
 	padding: 5px 8px;
 }
-even {
-	background: grey;
-}
-odd {
-	background:white;
-}
 thead{
 	background: -webkit-linear-gradient(135deg,#35a3db 2%,#12d9e8 100%);
 	background: linear-gradient(135deg,#35a3db 2%,#12d9e8 100%);

@@ -56,7 +56,6 @@ def show_category (request, field, category):
 
 # display companies matching filters
 def filter (request):
-
     industry_filter = request.GET.get('industry')
     stage_filter = request.GET.get('stage')
     year_filter = request.GET.get('year')

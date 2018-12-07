@@ -54,14 +54,15 @@ def show_category (request, field, category):
 
     return render (request,'index.html',{'companies':companies_obj,'filter_form':filterForm})
 
+
 # display companies matching filters
 def filter (request):
-
     industry_filter = request.GET.get('industry')
     stage_filter = request.GET.get('stage')
     year_filter = request.GET.get('year')
 
     companies_obj = Company.objects.all()
+
     if industry_filter:
         companies_obj = companies_obj.filter(industries=industry_filter)
     if stage_filter:
@@ -69,18 +70,7 @@ def filter (request):
     if year_filter:
         companies_obj = companies_obj.filter(year_founded=year_filter)
 
-    query = request.GET.get("q")
-    if query:
-        companies_obj = companies_obj.filter(
-        Q(name__icontains=query) |
-        Q(description__icontains=query) |
-        Q(industries__icontains=query) |
-        Q(stage__icontains=query)
-        ).distinct()
-
     return render (request,'index.html',{'companies':companies_obj,'filter_form':filterForm})
-
-
 
 def search (searched_string):
     return

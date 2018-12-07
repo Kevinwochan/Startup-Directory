@@ -10,22 +10,22 @@ COMPANY_TYPE_CHOICES.append(('','Company Type'))
 class filterForm(forms.Form):
     industry = forms.ChoiceField(choices=INDUSTRY_CHOICES,
         label="Industry",
-        widget=forms.Select(attrs={'class': "form-control mr-sm-2",'placeholder':'Industry'}),
+        widget=forms.Select(attrs={'class': "form-control mr-2 mt-2",'placeholder':'Industry'}),
         required=False)
 
     stage = forms.ChoiceField(choices=FUNDING_CHOICES,
         label="Stage",
-        widget=forms.Select(attrs={'class': "form-control mr-sm-2",'placeholder':'Stage'}),
+        widget=forms.Select(attrs={'class': "form-control mr-2 mt-2",'placeholder':'Stage'}),
         required=False)
 
     year = forms.ChoiceField(choices=YEAR_CHOICES,
         label="Year",
-        widget=forms.Select(attrs={'class': "form-control mr-sm-2",'placeholder':'Year'}),
+        widget=forms.Select(attrs={'class': "form-control mr-2 mt-2",'placeholder':'Year'}),
         required=False)
 
     company_type = forms.ChoiceField(choices=COMPANY_TYPE_CHOICES,
         label="Company Type",
-        widget=forms.Select(attrs={'class': "form-control mr-sm-2",'placeholder':'Type'}),
+        widget=forms.Select(attrs={'class': "form-control mr-2 mt-2",'placeholder':'Type'}),
         required=False)
 
 

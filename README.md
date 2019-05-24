@@ -1,48 +1,12 @@
- _____              _    _                    _      
-|_   _|            | |  | |                  | |     
-  | |    ___ __  __| |_ | |__    ___    ___  | | __  
-  | |   / _ \\ \/ /| __|| '_ \  / _ \  / _ \ | |/ /  
-  | |  |  __/ >  < | |_ | |_) || (_) || (_) ||   <   
-  \_/   \___|/_/\_\ \__||_.__/  \___/  \___/ |_|\_\  
-                                                     
-                                                     
- _   _               _                       _       
-| | | |             | |                     ( )      
-| | | |  ___  _ __  | |_  _   _  _ __   ___ |/  ___  
-| | | | / _ \| '_ \ | __|| | | || '__| / _ \   / __| 
-\ \_/ /|  __/| | | || |_ | |_| || |   |  __/   \__ \ 
- \___/  \___||_| |_| \__| \__,_||_|    \___|   |___/ 
-                                                     
-                                                     
- _____  _                 _                          
-/  ___|| |               | |                         
-\ `--. | |_   __ _  _ __ | |_  _   _  _ __           
- `--. \| __| / _` || '__|| __|| | | || '_ \          
-/\__/ /| |_ | (_| || |   | |_ | |_| || |_) |         
-\____/  \__| \__,_||_|    \__| \__,_|| .__/          
-                                     | |             
-                                     |_|             
-______  _                    _                       
-|  _  \(_)                  | |                      
-| | | | _  _ __   ___   ___ | |_   ___   _ __  _   _ 
-| | | || || '__| / _ \ / __|| __| / _ \ | '__|| | | |
-| |/ / | || |   |  __/| (__ | |_ | (_) || |   | |_| |
-|___/  |_||_|    \___| \___| \__| \___/ |_|    \__, |
-                                                __/ |
-                                               |___/ 
-
-##################
+# Textbook Ventures Startup Directory
 ## App Features ##
-##################
 Directory
     displays a list of companies in a tabular format
     displays a company's profile page with additional information
 
 Registration
 
-####################
-# Useful Utilities #
-####################
+## Useful Utilities
 
 CSV to DB saver
 
@@ -55,9 +19,7 @@ Downlad latest startups from google sheets
 
     pipenv run python manage.py shell < downloadStartups.py 
 
-##################
-## Dependencies ##
-##################
+## Dependencies
 
 - [Django compressor](http://django-compressor.readthedocs.org/en/latest/) to compress JS and CSS and compile LESS/SASS files.
 - [Pipenv](https://docs.pipenv.org) To manage dependences and virtualenvs.
@@ -67,9 +29,7 @@ Downlad latest startups from google sheets
 - [Sheets API]
 - [Oauth2] 
 
-######################
-## Local Host Setup ##
-######################
+## Local Host Setup
 
 1. Install Python3
 2. Install Pip3 (Python3 package manager)
@@ -83,9 +43,7 @@ Make sure you have [pipenv installed](https://docs.pipenv.org/install.html). The
     pip install django==2.0
 
    
-##############################
-## How to run on local host ##
-##############################
+## How to run on local host
 
 Once everything it's setup, make sure to update your files with the latest dataset and code using update.sh.
 
